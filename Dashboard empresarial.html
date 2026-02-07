@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OceanCentinel™ | Global Maritime Service Health</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* ======= DESIGN TOKENS ======= */
+    :root{
+      --bg-main:#020617;
+      --bg-panel:#020920;
+      --bg-header:#020617;
+      --accent:#38bdf8;
+      --ok:#22c55e;
+      --warn:#facc15;
+      --alert:#ef4444;
+      --unknown:#6b7280;
+      --text-main:#e5e7eb;
+      --text-soft:#9ca3af;
+      --radius-lg:18px;
+      --radius-sm:10px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Segoe UI,Arial,sans-serif;
+      background:
+        radial-gradient(circle at top,#061c33 0,#020617 55%),
+        radial-gradient(circle at bottom,#020617 0,#020617 55%);
+      color:var(--text-main);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    header{
+      padding:14px 22px;
+      background:var(--bg-header);
+      border-bottom:1px solid #0b2a4a;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .logo-mark{
+      width:30px;height:30px;border-radius:999px;
+      background:radial-gradient(circle at 30% 20%,#38bdf8,#0f172a);
+      box-shadow:0 0 18px rgba(56,189,248,.6);
+    }
+
+    .title-main{
+      font-size:18px;font-weight:600;color:var(--accent);
+      letter-spacing:.06em;text-transform:uppercase;
+    }
+    .title-sub{font-size:11px;color:var(--text-soft)}
+
+    main{
+      flex:1;
+      padding:18px 20px;
+      display:grid;
+      grid-template-columns:2.4fr 1.4fr;
+      gap:18px;
+    }
+    @media(max-width:1024px){main{grid-template-columns:1fr}}
+
+    .card{
+      background:linear-gradient(90deg,var(--bg-panel),rgba(15,23,42,.9));
+      border:1px solid rgba(15,23,42,.9);
+      border-radius:var(--radius-lg);
+      padding:16px;
+    }
+
+    .domain-card{
+      cursor:pointer;
+      margin-bottom:14px;
+    }
+
+    .domain-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+    }
+    .domain-title{font-size:14px;font-weight:600}
+    .domain-sub{font-size:11.5px;color:var(--text-soft)}
+
+    .domain-status{
+      font-size:11px;
+      padding:5px 10px;
+      border-radius:999px;
+      font-weight:600;
+      text-transform:uppercase;
+    }
+    .ok{color:var(--ok)}
+    .warn{color:var(--warn)}
+    .alert{color:var(--alert)}
+    .unknown{color:var(--unknown)}
+
+    .metric{
+      display:flex;
+      justify-content:space-between;
+      margin-top:8px;
+      font-size:11px;
+      color:var(--text-soft);
+    }
+
+    .side-title{
+      font-size:11px;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+      color:rgba(148,163,184,.95);
+    }
+
+    .last-update{
+      font-size:11px;
+      margin-top:10px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(56,189,248,.3);
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div style="display:flex;gap:12px;align-items:center">
+    <div class="logo-mark"></div>
+    <div>
+      <div class="title-main">OceanCentinel™ – Global Maritime Service Health</div>
+      <div class="title-sub">Live Posture • Human-Governed • Institutional Scope</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- LEFT -->
+  <section>
+    <div class="card">
+      <div style="font-size:15px;font-weight:600;margin-bottom:6px">
+        🛡️ Global Maritime Defensive Posture
+      </div>
+      <div style="font-size:12.5px;color:var(--text-soft);line-height:1.5">
+        Deterministic aggregation of maritime service health across domains.
+        No autonomous decisions. Human authority preserved.
+      </div>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:11px">
+        <div id="kpiOperational">Operational: 0</div>
+        <div id="kpiDegraded">Degraded: 0</div>
+        <div id="kpiCritical">Critical: 0</div>
+        <div>Human-Supervised</div>
+      </div>
+    </div>
+
+    <!-- DOMAINS -->
+    <div class="card domain-card">
+      <div class="domain-header">
+        <div>
+          <div class="domain-title">⚓ Port Infrastructure</div>
+          <div class="domain-sub">Harbor operations</div>
+        </div>
+        <div id="status-port" class="domain-status unknown">UNKNOWN</div>
+      </div>
+      <div class="metric">
+        <span>Service health</span>
+        <span id="count-port">0/0</span>
+      </div>
+    </div>
+
+    <div class="card domain-card">
+      <div class="domain-header">
+        <div>
+          <div class="domain-title">📡 Coastal Station</div>
+          <div class="domain-sub">Radar and control links</div>
+        </div>
+        <div id="status-coastal" class="domain-status unknown">UNKNOWN</div>
+      </div>
+      <div class="metric">
+        <span>Service health</span>
+        <span id="count-coastal">0/0</span>
+      </div>
+    </div>
+
+    <div class="card domain-card">
+      <div class="domain-header">
+        <div>
+          <div class="domain-title">🚢 Vessel Network</div>
+          <div class="domain-sub">Encrypted ship systems</div>
+        </div>
+        <div id="status-vessel" class="domain-status unknown">UNKNOWN</div>
+      </div>
+      <div class="metric">
+        <span>Service health</span>
+        <span id="count-vessel">0/0</span>
+      </div>
+    </div>
+
+    <div class="card domain-card">
+      <div class="domain-header">
+        <div>
+          <div class="domain-title">🛰️ Satellite Link</div>
+          <div class="domain-sub">Maritime relay segment</div>
+        </div>
+        <div id="status-satellite" class="domain-status unknown">UNKNOWN</div>
+      </div>
+      <div class="metric">
+        <span>Service health</span>
+        <span id="count-satellite">0/0</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT -->
+  <section>
+    <div class="card">
+      <div class="side-title">📊 Governance</div>
+      <div style="font-size:11px;line-height:1.5">
+        • No raw IPs or ports exposed<br>
+        • Backend-validated signals only<br>
+        • Human escalation authority preserved
+      </div>
+
+      <div id="lastUpdate" class="last-update">
+        Initializing live feed…
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+/* =========================
+   ENTERPRISE MARITIME ENGINE
+   ========================= */
+
+const BASE = location.pathname.includes("/motor") ? "/motor" : "";
+
+async function safeFetch(endpoint){
+  try{
+    const r = await fetch(BASE + endpoint,{cache:"no-cache"});
+    if(!r.ok) return {};
+    const j = await r.json();
+    return typeof j === "object" && j !== null ? j : {};
+  }catch{
+    return {};
+  }
+}
+
+function evaluateDomain(domain, services){
+  services = services || {};
+  const total = Object.keys(services).length;
+  let critical=false, degraded=false, operational=0;
+
+  Object.values(services).forEach(s=>{
+    if(s.status==="CRITICAL") critical=true;
+    else if(s.status==="DEGRADED") degraded=true;
+    else if(s.status==="OPERATIONAL") operational++;
+  });
+
+  const statusEl = document.getElementById(`status-${domain}`);
+  const countEl = document.getElementById(`count-${domain}`);
+
+  if(critical){
+    statusEl.textContent="CRITICAL";
+    statusEl.className="domain-status alert";
+  }else if(degraded){
+    statusEl.textContent="DEGRADED";
+    statusEl.className="domain-status warn";
+  }else if(total>0){
+    statusEl.textContent="OPERATIONAL";
+    statusEl.className="domain-status ok";
+  }else{
+    statusEl.textContent="UNKNOWN";
+    statusEl.className="domain-status unknown";
+  }
+
+  countEl.textContent = total ? `${operational}/${total}` : "0/0";
+
+  return { operational, degraded, critical };
+}
+
+async function refresh(){
+  const port = await safeFetch("/ocean/port-status");
+  const coastal = await safeFetch("/ocean/coastal-status");
+  const vessel = await safeFetch("/ocean/vessel-status");
+  const satellite = await safeFetch("/ocean/satellite-status");
+
+  const r1 = evaluateDomain("port",port);
+  const r2 = evaluateDomain("coastal",coastal);
+  const r3 = evaluateDomain("vessel",vessel);
+  const r4 = evaluateDomain("satellite",satellite);
+
+  document.getElementById("kpiOperational").textContent =
+    "Operational: " + (r1.operational+r2.operational+r3.operational+r4.operational);
+
+  document.getElementById("kpiDegraded").textContent =
+    "Degraded: " + ([r1,r2,r3,r4].filter(r=>r.degraded).length);
+
+  document.getElementById("kpiCritical").textContent =
+    "Critical: " + ([r1,r2,r3,r4].filter(r=>r.critical).length);
+
+  document.getElementById("lastUpdate").textContent =
+    "Live update: " + new Date().toLocaleTimeString();
+}
+
+setTimeout(refresh,800);
+setInterval(refresh,15000);
+</script>
+
+</body>
+</html>
