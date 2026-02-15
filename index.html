@@ -511,6 +511,65 @@
   <div class="container">
     <!-- HEADER -->
     <header class="header" aria-label="OceanCentinell Enterprise Header">
+  <div class="header-left">
+    <div class="logo-mark">
+      <svg class="logo-svg" viewBox="0 0 40 40"
+           role="img"
+           aria-labelledby="oceancentinell-logo-title oceancentinell-logo-desc">
+        <title id="oceancentinell-logo-title">OceanCentinell logo</title>
+        <desc id="oceancentinell-logo-desc">
+          Minimal lighthouse with a signal beam, representing private maritime cyber security.
+        </desc>
+
+        <defs>
+          <linearGradient id="towerGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e5e7eb"/>
+            <stop offset="100%" stop-color="#64748b"/>
+          </linearGradient>
+
+          <linearGradient id="seaGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0f172a"/>
+            <stop offset="100%" stop-color="#1e3a8a"/>
+          </linearGradient>
+
+          <radialGradient id="lightGrad" cx="0.5" cy="0.2" r="0.8">
+            <stop offset="0%" stop-color="#facc15" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#facc15" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Sea -->
+        <rect x="2" y="26" width="36" height="10" rx="5" fill="url(#seaGrad)"/>
+
+        <!-- Light beam -->
+        <path d="M20 10 L38 16 L20 22 Z" fill="url(#lightGrad)" opacity="0.8"/>
+
+        <!-- Lighthouse tower -->
+        <rect x="17" y="14" width="6" height="15" rx="1.5" fill="url(#towerGrad)"/>
+
+        <!-- Top structure -->
+        <rect x="16" y="12" width="8" height="3" rx="1" fill="#cbd5f5"/>
+        <polygon points="15,12 25,12 20,8" fill="#1d4ed8"/>
+
+        <!-- Signal highlight -->
+        <path d="M11 9 Q20 4 29 9 Q22 7 20 9 Q18 7 11 9 Z"
+              fill="#f9fafb"
+              stroke="#0f172a"
+              stroke-width="0.6"
+              stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <div class="header-text">
+      <h1>OceanCentinell ENTERPRISE</h1>
+      <p>Cybersecurity monitoring for private maritime and offshore operators</p>
+    </div>
+  </div>
+
+  <div class="badge" role="note">
+    $75,000 / Month SaaS · Privat
+
+    <header class="header" aria-label="OceanCentinell Enterprise Header">
       <div class="header-left">
         <div class="logo-mark">
           <svg class="logo-svg" viewBox="0 0 40 40"
@@ -1082,4 +1141,5 @@
             }
           } else {
             autoIconSvg.innerHTML = '<path d="M9 7l
+
 
