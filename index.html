@@ -247,17 +247,43 @@
       font-size:.8rem;
     }
     .plan-btn{
-      padding:.3rem .7rem;
+      padding:.4rem .8rem;
       border-radius:999px;
       border:1px solid rgba(148,163,184,.35);
       background:rgba(15,23,42,.7);
       color:var(--muted);
       cursor:pointer;
+      text-align:left;
+    }
+    .plan-btn-title{
+      font-weight:600;
+      color:#e5e7eb;
+      display:block;
+      font-size:.82rem;
+    }
+    .plan-btn-sub{
+      display:block;
+      font-size:.75rem;
+      color:var(--muted);
+      margin-top:.1rem;
+    }
+    .plan-btn-price{
+      display:block;
+      font-size:.78rem;
+      color:#e5e7eb;
+      margin-top:.1rem;
     }
     .plan-btn.active{
       background:linear-gradient(135deg, rgba(59,130,246,.9), rgba(96,165,250,.85));
       color:#0b1120;
       border-color:rgba(191,219,254,.9);
+    }
+    .plan-btn.active .plan-btn-title,
+    .plan-btn.active .plan-btn-price{
+      color:#020617;
+    }
+    .plan-btn.active .plan-btn-sub{
+      color:#0f172a;
     }
 
     .incidents{
@@ -563,14 +589,13 @@
           </svg>
         </div>
         <div class="header-text">
-          <h1>OceanCentinell  ENTERPRISE</h1>
-          <p>Cybersecurity monitoring for private maritime and offshore operators</p>
+          <h1>OceanCentinell ENTERPRISE</h1>
+          <p>Integrated cyber monitoring for private fleets, ports and offshore assets</p>
         </div>
       </div>
 
       <div class="badge" role="note">
-        Enterprise Maritime Cyber Platform · Plans from $15,000 to $125,000 USD / Month ·
-        Custom Deployment · Private Fleets · Port & Offshore Operators
+        Enterprise Maritime Cyber Platform · From $15,000 to $125,000 USD / Month · Annual contracts · Global support
       </div>
     </header>
 
@@ -630,7 +655,7 @@
           </div>
           <div class="metric-details-main">
             <strong id="metricDetailTitle">Risk Index</strong>
-            <span id="metricDetailText">Tap any metric card to see an executive explanation and the current reading.</span>
+            <span id="metricDetailText">Select any metric to see an executive explanation and its current value.</span>
           </div>
         </div>
 
@@ -640,29 +665,41 @@
           </div>
         </div>
 
-        <div class="statusRow" aria-label="Demo Status">
+        <div class="statusRow" aria-label="Commercial context">
           <div class="pill" title="Auto-refresh status">
             <span class="dot" id="autoDot"></span>
             <span id="autoText">Auto refresh: –</span>
           </div>
-          <div class="pill" title="List price">
-            <span>List price:</span>
+          <div class="pill" title="Selected commercial plan">
+            <span>Commercial plan:</span>
             <strong id="pricePill">–</strong>
           </div>
-          <div class="pill" title="Last update time">
+          <div class="pill" title="Last telemetry update">
             <span>Last update:</span>
             <span id="lastUpdate">–</span>
           </div>
-          <div class="pill" title="Incident buffer size">
+          <div class="pill" title="Current incident buffer size">
             <span>Buffer:</span>
             <span id="bufferCount">0</span>
           </div>
         </div>
 
-        <div class="plan-selector" aria-label="Pricing plans">
-          <button type="button" class="plan-btn active" data-plan="starter">Fleet Starter · $15k/mo</button>
-          <button type="button" class="plan-btn" data-plan="advanced">Port & Offshore Advanced · $45k/mo</button>
-          <button type="button" class="plan-btn" data-plan="enterprise">Enterprise 360 · $125k/mo</button>
+        <div class="plan-selector" aria-label="Enterprise pricing plans">
+          <button type="button" class="plan-btn active" data-plan="starter">
+            <span class="plan-btn-title">Fleet Starter</span>
+            <span class="plan-btn-sub">Up to 25 vessels, single region</span>
+            <span class="plan-btn-price">From $15,000 / month · Annual</span>
+          </button>
+          <button type="button" class="plan-btn" data-plan="advanced">
+            <span class="plan-btn-title">Port & Offshore Advanced</span>
+            <span class="plan-btn-sub">Ports, terminals and offshore clusters</span>
+            <span class="plan-btn-price">From $45,000 / month · Annual</span>
+          </button>
+          <button type="button" class="plan-btn" data-plan="enterprise">
+            <span class="plan-btn-title">Enterprise 360</span>
+            <span class="plan-btn-sub">Multi‑fleet, multi‑region, governance‑driven</span>
+            <span class="plan-btn-price">From $125,000 / month · Annual</span>
+          </button>
         </div>
       </section>
 
@@ -676,7 +713,7 @@
             <div class="legend-item"><span class="sev-dot sev-high"></span><span>High</span></div>
             <div class="legend-item"><span class="sev-dot sev-crit"></span><span>Critical</span></div>
           </div>
-          <div>Demo Mode: simulated maritime cyber incidents (region-agnostic)</div>
+          <div>Offline demo · Simulated maritime cyber incidents (region‑agnostic)</div>
         </div>
 
         <div class="incidents" id="incidentsContainer">
@@ -692,10 +729,10 @@
         <div>
           <div class="workspace-title" id="wsTitle">Execution · Risk Index</div>
           <div class="workspace-subtitle" id="wsSubtitle">
-            Select a metric or module to open its execution view for fishing fleets and private commercial tenants.
+            Tie commercial scope to execution: select a metric or module to see how it is enforced on fleets, ports and offshore tenants.
           </div>
         </div>
-        <span class="workspace-subtitle">All modules are region-agnostic and tenant configurable.</span>
+        <span class="workspace-subtitle">All modules are region‑agnostic, tenant‑aware and designed for board‑level reporting.</span>
       </div>
 
       <div class="workspace-tabs" role="tablist" aria-label="Execution modules">
@@ -919,8 +956,9 @@
       </div>
     </section>
 
-    <div class="controls" role="group" aria-label="Controls">
-      <button class="primary" id="forceScanBtn" type="button">
+    <!-- ENTERPRISE CTAS -->
+    <div class="controls" role="group" aria-label="Commercial actions">
+      <button class="primary" id="ctaRequestProposal" type="button">
         <span class="icon" aria-hidden="true">
           <svg viewBox="0 0 24 24">
             <path d="M4 4v6h6"/>
@@ -929,25 +967,30 @@
             <path d="M19 11a7 7 0 0 0-12-3"/>
           </svg>
         </span>
-        <span>Force Scan</span>
+        <span>Request Enterprise Proposal</span>
       </button>
-      <button class="ghost" id="toggleAutoBtn" type="button">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" id="autoIconSvg">
-            <path d="M9 7h2v10H9zM13 7h2v10h-2z"/>
-          </svg>
-        </span>
-        <span>Pause Auto</span>
-      </button>
-      <button class="secondary" id="clearBtn" type="button">
+
+      <button class="secondary" id="ctaScheduleDemo" type="button">
         <span class="icon" aria-hidden="true">
           <svg viewBox="0 0 24 24">
-            <path d="M4 18l4-4 6 6H6a2 2 0 0 1-2-2z"/>
-            <path d="M14 4l6 6-2 2-6-6z"/>
+            <path d="M4 4h16v4H4z"/>
+            <path d="M4 10h16v10H4z"/>
+            <path d="M8 2v4"/>
+            <path d="M16 2v4"/>
           </svg>
         </span>
-        <span>Clear</span>
+        <span>Schedule Technical Demo</span>
       </button>
+
+      <button class="ghost" id="ctaTalkToSales" type="button">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 5h16v9H5l-1 4z"/>
+          </svg>
+        </span>
+        <span>Talk to Sales</span>
+      </button>
+
       <button class="success" id="exportBtn" type="button">
         <span class="icon" aria-hidden="true">
           <svg viewBox="0 0 24 24">
@@ -956,7 +999,7 @@
             <path d="M5 14v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/>
           </svg>
         </span>
-        <span>Executive Report</span>
+        <span>Export Executive Briefing</span>
       </button>
     </div>
   </div>
@@ -998,10 +1041,7 @@
         metricDetails: $("metricDetails"),
         metricDetailTitle: $("metricDetailTitle"),
         metricDetailText: $("metricDetailText"),
-        forceScanBtn: $("forceScanBtn"),
-        clearBtn: $("clearBtn"),
         exportBtn: $("exportBtn"),
-        toggleAutoBtn: $("toggleAutoBtn"),
         wsTitle: $("wsTitle"),
         wsSubtitle: $("wsSubtitle"),
       };
@@ -1091,16 +1131,8 @@
 
           if (this._auto) {
             autoIconSvg.innerHTML = '<path d="M9 7h2v10H9zM13 7h2v10h-2z"/>';
-            if (els.toggleAutoBtn) {
-              const span = els.toggleAutoBtn.querySelector("span:last-child");
-              if (span) span.textContent = "Pause Auto";
-            }
           } else {
             autoIconSvg.innerHTML = '<path d="M9 7l8 5-8 5z"/>';
-            if (els.toggleAutoBtn) {
-              const span = els.toggleAutoBtn.querySelector("span:last-child");
-              if (span) span.textContent = "Resume Auto";
-            }
           }
 
           if (this._auto) {
@@ -1217,7 +1249,7 @@
           const m = this.metrics;
           const plan = PLANS[ACTIVE_PLAN];
 
-          els.pricePill.textContent = `${plan.label} · $${plan.price.toLocaleString()} USD / Month`;
+          els.pricePill.textContent = `${plan.label} · $${plan.price.toLocaleString()} USD / month (annual)`; 
 
           els.riskScore.textContent = m.risk_score ?? "–";
           els.assetsCount.textContent = m.assets ?? "–";
@@ -1306,7 +1338,7 @@
             const report = {
               platform: "OceanCentinell ENTERPRISE v3.2 (Offline Demo)",
               organization: "Victoria en Cristo Jesús LLC",
-              plan: plan.label,
+              commercial_plan: plan.label,
               list_price_monthly_usd: plan.price,
               exported_at: exportedAt,
               metrics: this.metrics,
@@ -1321,12 +1353,11 @@
             a.href = url;
 
             const ts = safeFilenameTimestamp(exportedAt);
-
             const priceLabel = plan.price === 0
               ? "DEMO-1M"
               : `${plan.price}USD-MO`;
 
-            a.download = `OceanCentinell_Report_${plan.label}_${priceLabel}_${ts}.json`;
+            a.download = `OceanCentinell_Enterprise_Report_${plan.label}_${priceLabel}_${ts}.json`;
 
             document.body.appendChild(a);
             a.click();
@@ -1357,21 +1388,21 @@
         risk: {
           title: "Risk Index",
           getText: (m) =>
-            `Current cyber risk index for your monitored maritime estate. Current score: ${
+            `Board‑level cyber risk index across your monitored maritime estate. Current score: ${
               m.risk_score ?? "–"
             }.`,
         },
         assets: {
           title: "Protected Assets",
           getText: (m) =>
-            `Number of critical maritime assets under monitoring. Current assets in scope: ${
+            `Critical maritime assets under continuous monitoring (vessels, ports, OT systems). Current assets in scope: ${
               m.assets ?? "–"
             }.`,
         },
         uptime: {
           title: "Platform Uptime",
           getText: (m) =>
-            `Service availability of the OceanCentinell stack. Current uptime: ${
+            `Service availability of the OceanCentinell stack across your tenants. Current uptime: ${
               m.uptime != null ? m.uptime + "%" : "–"
             }.`,
         },
@@ -1379,7 +1410,7 @@
           title: "Events Per Second",
           getText: (m) => {
             const eps = m.eps != null ? m.eps.toString() : "–";
-            return `Inbound security telemetry ingestion rate. Current EPS: ${eps} events/second.`;
+            return `Inbound security telemetry ingestion rate across fleets and ports. Current EPS: ${eps} events/second.`;
           },
         },
       };
@@ -1618,7 +1649,7 @@
         siem.activeVessel = null;
         if (els.wsSubtitle) {
           els.wsSubtitle.textContent =
-            "Select a metric or module to open its execution view for fishing fleets and private commercial tenants.";
+            "Tie commercial scope to execution: select a metric or module to see how it is enforced on fleets, ports and offshore tenants.";
         }
       });
 
@@ -1704,10 +1735,26 @@
       const siem = new OceanCentinellSIEM();
       siem.start();
 
-      els.forceScanBtn.addEventListener("click", () => siem.forceScan());
-      els.clearBtn.addEventListener("click", () => siem.clear());
+      // Enterprise CTAs
+      $("ctaRequestProposal").addEventListener("click", () => {
+        window.location.href =
+          "mailto:sales@oceancentinell.com"
+          + "?subject=OceanCentinell%20Enterprise%20Proposal"
+          + "&body=Please%20contact%20me%20about%20an%20enterprise%20proposal%20for%20our%20fleet%2Fports.";
+      });
+
+      $("ctaScheduleDemo").addEventListener("click", () => {
+        window.location.href = "https://your-booking-link.com";
+      });
+
+      $("ctaTalkToSales").addEventListener("click", () => {
+        window.location.href = "https://your-website.com/contact-enterprise";
+      });
+
       els.exportBtn.addEventListener("click", () => siem.exportExecutiveReport());
-      els.toggleAutoBtn.addEventListener("click", () => siem.toggleAuto());
+
+      // Auto-refresh default ON
+      siem._setAuto(true);
 
       setTimeout(() => {
         updateMetricDetail("risk", siem.metrics);
@@ -1725,4 +1772,3 @@
   </script>
 </body>
 </html>
-
