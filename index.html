@@ -162,7 +162,6 @@
     }
     .metric-details-main strong{display:block;margin-bottom:.15rem;font-size:.95rem}
 
-    /* MINI‑DASHBOARD BAJO LAS TARJETAS */
     .mini-dash{
       margin-top:0.8rem;
       padding:0.8rem 1rem;
@@ -240,6 +239,27 @@
     .dot.on{background:var(--green)}
     .dot.off{background:rgba(148,163,184,.55)}
 
+    .plan-selector{
+      display:flex;
+      gap:.4rem;
+      flex-wrap:wrap;
+      margin-top:.6rem;
+      font-size:.8rem;
+    }
+    .plan-btn{
+      padding:.3rem .7rem;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.35);
+      background:rgba(15,23,42,.7);
+      color:var(--muted);
+      cursor:pointer;
+    }
+    .plan-btn.active{
+      background:linear-gradient(135deg, rgba(59,130,246,.9), rgba(96,165,250,.85));
+      color:#0b1120;
+      border-color:rgba(191,219,254,.9);
+    }
+
     .incidents{
       flex:1;
       max-height: 390px;
@@ -307,7 +327,6 @@
     .risk.high{background: rgba(239,68,68,.16); border-color: rgba(239,68,68,.50); color:#ffe4e6}
     .risk.critical{background: rgba(251,113,133,.18); border-color: rgba(251,113,133,.55); color:#fff1f2}
 
-    /* Workspace (10 páginas) */
     .workspace{
       margin-top:1.4rem;
     }
@@ -550,12 +569,12 @@
       </div>
 
       <div class="badge" role="note">
-     Enterprise Maritime Cyber Platform · $15,000 USD / Month · Custom Deployment ·  
-        Private Fleets · Port & Offshore Operators
-   </div>
-     </header>
+        Enterprise Maritime Cyber Platform · Plans from $15,000 to $125,000 USD / Month ·
+        Custom Deployment · Private Fleets · Port & Offshore Operators
+      </div>
+    </header>
 
-   <!-- GRID PRINCIPAL -->
+    <!-- GRID PRINCIPAL -->
     <main class="grid" role="main">
       <section class="card" aria-label="Key Metrics">
         <div class="metrics">
@@ -638,6 +657,12 @@
             <span>Buffer:</span>
             <span id="bufferCount">0</span>
           </div>
+        </div>
+
+        <div class="plan-selector" aria-label="Pricing plans">
+          <button type="button" class="plan-btn active" data-plan="starter">Fleet Starter · $15k/mo</button>
+          <button type="button" class="plan-btn" data-plan="advanced">Port & Offshore Advanced · $45k/mo</button>
+          <button type="button" class="plan-btn" data-plan="enterprise">Enterprise 360 · $125k/mo</button>
         </div>
       </section>
 
@@ -940,7 +965,13 @@
     (() => {
       "use strict";
 
-      const LIST_PRICE_MONTHLY_USD = 15000;
+      const PLANS = {
+        starter:   { label: "Fleet Starter",            price: 15000 },
+        advanced:  { label: "Port & Offshore Advanced", price: 45000 },
+        enterprise:{ label: "Enterprise 360",           price: 125000 },
+      };
+
+      let ACTIVE_PLAN = "starter";
 
       const CONFIG = {
         refreshMs: 4000,
@@ -967,12 +998,10 @@
         metricDetails: $("metricDetails"),
         metricDetailTitle: $("metricDetailTitle"),
         metricDetailText: $("metricDetailText"),
-
         forceScanBtn: $("forceScanBtn"),
         clearBtn: $("clearBtn"),
         exportBtn: $("exportBtn"),
         toggleAutoBtn: $("toggleAutoBtn"),
-
         wsTitle: $("wsTitle"),
         wsSubtitle: $("wsSubtitle"),
       };
@@ -985,16 +1014,12 @@
       const wsTabs = Array.from(document.querySelectorAll(".workspace-tab"));
       const wsPages = Array.from(document.querySelectorAll(".workspace-page"));
 
+      const planButtons = Array.from(document.querySelectorAll(".plan-btn"));
+
       const fmtTime = new Intl.DateTimeFormat(undefined, {
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit"
-      });
-
-      const fmtMoney = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-        maximumFractionDigits: 0
       });
 
       function safeFilenameTimestamp(isoString){
@@ -1190,10 +1215,9 @@
 
         _render() {
           const m = this.metrics;
+          const plan = PLANS[ACTIVE_PLAN];
 
-          els.pricePill.textContent = `${fmtMoney.format(
-            LIST_PRICE_MONTHLY_USD
-          )}/mo`;
+          els.pricePill.textContent = `${plan.label} · $${plan.price.toLocaleString()} USD / Month`;
 
           els.riskScore.textContent = m.risk_score ?? "–";
           els.assetsCount.textContent = m.assets ?? "–";
@@ -1266,56 +1290,48 @@
             els.srAnnounce.textContent = "";
           }, 1200);
         }
-exportExecutiveReport() {
-  if (this._exportLock) return;
 
-  this._exportLock = true;
-  els.exportBtn.disabled = true;
+        exportExecutiveReport() {
+          if (this._exportLock) return;
 
-  let url = null;
+          this._exportLock = true;
+          els.exportBtn.disabled = true;
 
-  try {
-    const exportedAt = new Date().toISOString();
-    const plan = PLANS[ACTIVE_PLAN];
+          let url = null;
 
-    const report = {
-      platform: "OceanCentinell ENTERPRISE v3.2 (Offline Demo)",
-      organization: "Victoria en Cristo Jesús LLC",
-      plan: plan.label,
-      list_price_monthly_usd: plan.price,
-      exported_at: exportedAt,
-      metrics: this.metrics,
-      incidents: this.incidents,
-    };
+          try {
+            const exportedAt = new Date().toISOString();
+            const plan = PLANS[ACTIVE_PLAN];
 
-    const json = JSON.stringify(report, null, 2);
-    const blob = new Blob([json], { type: "application/json" });
-    url = URL.createObjectURL(blob);
+            const report = {
+              platform: "OceanCentinell ENTERPRISE v3.2 (Offline Demo)",
+              organization: "Victoria en Cristo Jesús LLC",
+              plan: plan.label,
+              list_price_monthly_usd: plan.price,
+              exported_at: exportedAt,
+              metrics: this.metrics,
+              incidents: this.incidents,
+            };
 
-    const a = document.createElement("a");
-    a.href = url;
+            const json = JSON.stringify(report, null, 2);
+            const blob = new Blob([json], { type: "application/json" });
+            url = URL.createObjectURL(blob);
 
-    const ts = safeFilenameTimestamp(exportedAt);
+            const a = document.createElement("a");
+            a.href = url;
 
-    const priceLabel = plan.price === 0
-      ? "DEMO-1M"
-      : `${plan.price}USD-MO`;
+            const ts = safeFilenameTimestamp(exportedAt);
 
-    a.download = `OceanCentinell_Report_${plan.label}_${priceLabel}_${ts}.json`;
+            const priceLabel = plan.price === 0
+              ? "DEMO-1M"
+              : `${plan.price}USD-MO`;
 
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+            a.download = `OceanCentinell_Report_${plan.label}_${priceLabel}_${ts}.json`;
 
-  } catch (err) {
-    console.error("Executive report export failed:", err);
-  } finally {
-    if (url) URL.revokeObjectURL(url);
-    this._exportLock = false;
-    els.exportBtn.disabled = false;
-  }
-}
-          
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+
             this._announce("Executive report exported.");
           } catch (e) {
             console.error("Export failed:", e);
@@ -1336,14 +1352,6 @@ exportExecutiveReport() {
           }
         }
       }
-
-      const siem = new OceanCentinellSIEM();
-      siem.start();
-
-      els.forceScanBtn.addEventListener("click", () => siem.forceScan());
-      els.clearBtn.addEventListener("click", () => siem.clear());
-      els.exportBtn.addEventListener("click", () => siem.exportExecutiveReport());
-      els.toggleAutoBtn.addEventListener("click", () => siem.toggleAuto());
 
       const metricDescriptions = {
         risk: {
@@ -1571,6 +1579,16 @@ exportExecutiveReport() {
         });
       });
 
+      planButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const planKey = btn.dataset.plan;
+          if (!PLANS[planKey]) return;
+          ACTIVE_PLAN = planKey;
+          planButtons.forEach(b => b.classList.toggle("active", b === btn));
+          siem._render();
+        });
+      });
+
       const fleetTableBody = document.querySelector("#fleetTable tbody");
       $("btnAddVessel").addEventListener("click", () => {
         const name = $("fleetName").value.trim();
@@ -1683,13 +1701,21 @@ exportExecutiveReport() {
           (success ? "SUCCESS (simulated)." : "ISSUES detected, review configuration.");
       });
 
+      const siem = new OceanCentinellSIEM();
+      siem.start();
+
+      els.forceScanBtn.addEventListener("click", () => siem.forceScan());
+      els.clearBtn.addEventListener("click", () => siem.clear());
+      els.exportBtn.addEventListener("click", () => siem.exportExecutiveReport());
+      els.toggleAutoBtn.addEventListener("click", () => siem.toggleAuto());
+
       setTimeout(() => {
         updateMetricDetail("risk", siem.metrics);
         activateWorkspacePage("fleet");
       }, 1500);
 
       window.addEventListener("beforeunload", () => {
-        try{ siem.destroy(); } catch(_){}
+        try{ siem.destroy(); } catch(_){} 
       }, { capture:true });
 
       window.goTo = function(page){
@@ -1699,9 +1725,6 @@ exportExecutiveReport() {
   </script>
 </body>
 </html>
-
-
-
 
 
 
