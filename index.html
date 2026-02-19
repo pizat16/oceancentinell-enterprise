@@ -1266,38 +1266,56 @@
             els.srAnnounce.textContent = "";
           }, 1200);
         }
+exportExecutiveReport() {
+  if (this._exportLock) return;
 
-        exportExecutiveReport() {
-          if (this._exportLock) return;
+  this._exportLock = true;
+  els.exportBtn.disabled = true;
 
-          this._exportLock = true;
-          els.exportBtn.disabled = true;
+  let url = null;
 
-          let url = null;
+  try {
+    const exportedAt = new Date().toISOString();
+    const plan = PLANS[ACTIVE_PLAN];
 
-          try {
-            const exportedAt = new Date().toISOString();
-            const report = {
-              platform: "OceanCentinell ENTERPRISE v3.2 (Offline Demo)",
-              org: "Victoria en Cristo Jesús LLC",
-              list_price_monthly_usd: LIST_PRICE_MONTHLY_USD,
-              exported_at: exportedAt,
-              metrics: this.metrics,
-              incidents: this.incidents,
-            };
+    const report = {
+      platform: "OceanCentinell ENTERPRISE v3.2 (Offline Demo)",
+      organization: "Victoria en Cristo Jesús LLC",
+      plan: plan.label,
+      list_price_monthly_usd: plan.price,
+      exported_at: exportedAt,
+      metrics: this.metrics,
+      incidents: this.incidents,
+    };
 
-            const json = JSON.stringify(report, null, 2);
-            const blob = new Blob([json], { type: "application/json" });
-            url = URL.createObjectURL(blob);
+    const json = JSON.stringify(report, null, 2);
+    const blob = new Blob([json], { type: "application/json" });
+    url = URL.createObjectURL(blob);
 
-            const a = document.createElement("a");
-            a.href = url;
-            const ts = safeFilenameTimestamp(exportedAt);
-            a.download = `OceanCentinell_Report_${LIST_PRICE_MONTHLY_USD}USD-MO_${ts}.json`;
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
+    const a = document.createElement("a");
+    a.href = url;
 
+    const ts = safeFilenameTimestamp(exportedAt);
+
+    const priceLabel = plan.price === 0
+      ? "DEMO-1M"
+      : `${plan.price}USD-MO`;
+
+    a.download = `OceanCentinell_Report_${plan.label}_${priceLabel}_${ts}.json`;
+
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+  } catch (err) {
+    console.error("Executive report export failed:", err);
+  } finally {
+    if (url) URL.revokeObjectURL(url);
+    this._exportLock = false;
+    els.exportBtn.disabled = false;
+  }
+}
+          
             this._announce("Executive report exported.");
           } catch (e) {
             console.error("Export failed:", e);
@@ -1681,6 +1699,7 @@
   </script>
 </body>
 </html>
+
 
 
 
