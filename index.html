@@ -569,8 +569,7 @@
       </div>
 
       <div class="badge" role="note">
-        Enterprise Maritime Cyber Platform · Plans from $15,000 to $125,000 USD / Month ·
-        Custom Deployment · Private Fleets · Port & Offshore Operators
+        Enterprise Maritime Cyber Platform · Custom Deployment · Private Fleets · Port & Offshore Operators
       </div>
     </header>
 
@@ -645,8 +644,8 @@
             <span class="dot" id="autoDot"></span>
             <span id="autoText">Auto refresh: –</span>
           </div>
-          <div class="pill" title="List price">
-            <span>List price:</span>
+          <div class="pill" title="List information">
+            <span>Plan:</span>
             <strong id="pricePill">–</strong>
           </div>
           <div class="pill" title="Last update time">
@@ -659,10 +658,10 @@
           </div>
         </div>
 
-        <div class="plan-selector" aria-label="Pricing plans">
-          <button type="button" class="plan-btn active" data-plan="starter">Fleet Starter · $15k/mo</button>
-          <button type="button" class="plan-btn" data-plan="advanced">Port & Offshore Advanced · $45k/mo</button>
-          <button type="button" class="plan-btn" data-plan="enterprise">Enterprise 360 · $125k/mo</button>
+        <div class="plan-selector" aria-label="Plans">
+          <button type="button" class="plan-btn active" data-plan="starter">Fleet Starter</button>
+          <button type="button" class="plan-btn" data-plan="advanced">Port & Offshore Advanced</button>
+          <button type="button" class="plan-btn" data-plan="enterprise">Enterprise 360</button>
         </div>
       </section>
 
@@ -966,9 +965,9 @@
       "use strict";
 
       const PLANS = {
-        starter:   { label: "Fleet Starter",            price: 15000 },
-        advanced:  { label: "Port & Offshore Advanced", price: 45000 },
-        enterprise:{ label: "Enterprise 360",           price: 125000 },
+        starter:   { label: "Fleet Starter" },
+        advanced:  { label: "Port & Offshore Advanced" },
+        enterprise:{ label: "Enterprise 360" },
       };
 
       let ACTIVE_PLAN = "starter";
@@ -1217,7 +1216,7 @@
           const m = this.metrics;
           const plan = PLANS[ACTIVE_PLAN];
 
-          els.pricePill.textContent = `${plan.label} · $${plan.price.toLocaleString()} USD / Month`;
+          els.pricePill.textContent = plan.label;
 
           els.riskScore.textContent = m.risk_score ?? "–";
           els.assetsCount.textContent = m.assets ?? "–";
@@ -1307,7 +1306,6 @@
               platform: "OceanCentinell ENTERPRISE v3.2 (Offline Demo)",
               organization: "Victoria en Cristo Jesús LLC",
               plan: plan.label,
-              list_price_monthly_usd: plan.price,
               exported_at: exportedAt,
               metrics: this.metrics,
               incidents: this.incidents,
@@ -1322,9 +1320,7 @@
 
             const ts = safeFilenameTimestamp(exportedAt);
 
-            const priceLabel = plan.price === 0
-              ? "DEMO-1M"
-              : `${plan.price}USD-MO`;
+            const priceLabel = "PLAN";
 
             a.download = `OceanCentinell_Report_${plan.label}_${priceLabel}_${ts}.json`;
 
@@ -1725,7 +1721,5 @@
   </script>
 </body>
 </html>
-
-
 
 
