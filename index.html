@@ -4,19 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark" />
-  <title>OceanCentinell ENTERPRISE - Maritime </title>
+  <title>OceanCentinell ENTERPRISE - Maritime</title>
 
   <style>
     :root{
       --blue-950:#0b1220;
-      --blue-900:#0f172a; --blue-800:#1e3a8a; --blue-700:#2563eb;
-      --blue-600:#3b82f6; --blue-500:#60a5fa; --blue-400:#93c5fd;
-      --green:#10b981; --amber:#f59e0b; --red:#ef4444; --rose:#fb7185;
+      --blue-900:#0f172a;
+      --blue-800:#1e3a8a;
+      --blue-700:#2563eb;
+      --blue-600:#3b82f6;
+      --blue-500:#60a5fa;
+      --blue-400:#93c5fd;
+      --green:#10b981;
+      --amber:#f59e0b;
+      --red:#ef4444;
+      --rose:#fb7185;
       --bg:var(--blue-900);
       --card:#111c33;
-      --glass:rgba(17, 28, 51, .9);
+      --glass:rgba(17,28,51,.9);
       --border:rgba(148,163,184,.22);
-      --text:#f8fafc; --muted:#94a3b8;
+      --text:#f8fafc;
+      --muted:#94a3b8;
       --radius:16px;
       --shadow:0 30px 80px rgba(0,0,0,.45);
       --focus:0 0 0 4px rgba(96,165,250,.35);
@@ -24,16 +32,22 @@
 
     *{box-sizing:border-box}
     html,body{height:100%}
+
     body{
       margin:0;
       font-family: Segoe UI, Arial, sans-serif;
-      background: radial-gradient(1200px 800px at 20% 10%, rgba(37,99,235,.28), transparent 55%),
-                  radial-gradient(900px 700px at 80% 35%, rgba(16,185,129,.18), transparent 55%),
-                  linear-gradient(135deg, var(--bg), var(--blue-800));
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(37,99,235,.28), transparent 55%),
+        radial-gradient(900px 700px at 80% 35%, rgba(16,185,129,.18), transparent 55%),
+        linear-gradient(135deg, var(--bg), var(--blue-800));
       color:var(--text);
     }
 
-    .container{max-width:1700px;margin:0 auto;padding:2rem}
+    .container{
+      max-width:1700px;
+      margin:0 auto;
+      padding:2rem;
+    }
 
     .header{
       background: linear-gradient(135deg, rgba(37,99,235,.95), rgba(96,165,250,.85));
@@ -66,6 +80,7 @@
       flex-shrink:0;
       box-shadow:0 0 0 1px rgba(15,23,42,.6), 0 0 12px rgba(15,23,42,.8);
     }
+
     .logo-svg{
       width:26px;
       height:26px;
@@ -77,6 +92,7 @@
       font-size: clamp(1.9rem, 2.6vw, 2.7rem);
       letter-spacing:.25px;
     }
+
     .header-text p{
       margin:0;
       color:#e0f2fe;
@@ -84,7 +100,10 @@
     }
 
     .badge{
-      display:inline-flex; gap:.65rem; align-items:center; justify-content:center;
+      display:inline-flex;
+      gap:.65rem;
+      align-items:center;
+      justify-content:center;
       padding:.55rem 1.2rem;
       border-radius:2rem;
       border:1px solid rgba(16,185,129,.55);
@@ -98,8 +117,8 @@
     .grid{
       display:grid;
       grid-template-columns: 1.05fr .95fr;
-      gap: 1.4rem;
-      margin-top: 1.4rem;
+      gap:1.4rem;
+      margin-top:1.4rem;
     }
 
     .card{
@@ -111,14 +130,18 @@
       backdrop-filter: blur(10px);
       display:flex;
       flex-direction:column;
+      min-height:0;
     }
 
-    .card h3{margin:.1rem 0 1rem;font-size:1.15rem}
+    .card h3{
+      margin:.1rem 0 1rem;
+      font-size:1.15rem;
+    }
 
     .metrics{
       display:grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+      gap:1rem;
     }
 
     .metric{
@@ -128,23 +151,51 @@
       text-align:center;
       border: 1px solid rgba(147,197,253,.12);
       min-height: 96px;
-      display:flex; flex-direction:column; justify-content:center;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
       cursor:pointer;
       transition: background .12s ease, border-color .12s ease, transform .06s ease;
     }
-    .metric:hover{background: rgba(37,99,235,.4); border-color: rgba(147,197,253,.35); transform: translateY(-1px);}
-    .metric.active{background: rgba(59,130,246,.5); border-color: rgba(191,219,254,.8);}
+
+    .metric:hover{
+      background: rgba(37,99,235,.4);
+      border-color: rgba(147,197,253,.35);
+      transform: translateY(-1px);
+    }
+
+    .metric.active{
+      background: rgba(59,130,246,.5);
+      border-color: rgba(191,219,254,.8);
+    }
 
     .metric-icon{
       margin-bottom:.25rem;
       opacity:.9;
     }
+
     .metric-icon svg{
-      width:20px;height:20px;display:inline-block;fill:none;stroke:#bfdbfe;stroke-width:1.6;
+      width:20px;
+      height:20px;
+      display:inline-block;
+      fill:none;
+      stroke:#bfdbfe;
+      stroke-width:1.6;
     }
 
-    .metric h2{margin:0;font-size: clamp(1.4rem, 2.1vw, 2.3rem); color: var(--blue-400)}
-    .metric span{margin-top:.1rem;font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+    .metric h2{
+      margin:0;
+      font-size: clamp(1.4rem, 2.1vw, 2.3rem);
+      color: var(--blue-400);
+    }
+
+    .metric span{
+      margin-top:.1rem;
+      font-size:.78rem;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
 
     .metric-details{
       margin-top:1rem;
@@ -157,10 +208,15 @@
       align-items:flex-start;
       gap:.7rem;
     }
+
     .metric-details-icon svg{
-      width:22px;height:22px;display:block;fill:none;stroke:#bfdbfe;stroke-width:1.8;
+      width:22px;
+      height:22px;
+      display:block;
+      fill:none;
+      stroke:#bfdbfe;
+      stroke-width:1.8;
     }
-    .metric-details-main strong{display:block;margin-bottom:.15rem;font-size:.95rem}
 
     .mini-dash{
       margin-top:0.8rem;
@@ -169,31 +225,33 @@
       background:rgba(15,23,42,.95);
       border:1px solid rgba(30,64,175,.65);
       font-size:.8rem;
+      min-height:80px;
     }
+
     .mini-dash-title{
       font-weight:600;
       font-size:.85rem;
       margin-bottom:.4rem;
       color:#e5e7eb;
     }
-    .mini-dash-grid{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap:.5rem .9rem;
-    }
+
     .mini-dash-row{
       display:flex;
       align-items:center;
       gap:.4rem;
+      margin-bottom:.3rem;
     }
+
     .mini-dash-label{
       flex:0 0 90px;
       color:var(--muted);
     }
+
     .mini-dash-value{
       font-weight:700;
       color:#e5e7eb;
     }
+
     .mini-dash-bar{
       position:relative;
       flex:1;
@@ -202,42 +260,48 @@
       background:rgba(15,23,42,1);
       overflow:hidden;
     }
+
     .mini-dash-bar-fill{
       position:absolute;
       left:0;top:0;bottom:0;
       border-radius:999px;
       background:linear-gradient(90deg,#22c55e,#eab308,#ef4444);
     }
-    .mini-dash-pill{
-      padding:.15rem .45rem;
-      border-radius:999px;
-      border:1px solid rgba(148,163,184,.4);
-      font-size:.75rem;
-      color:var(--muted);
-    }
-    .mini-dash-empty{
-      color:var(--muted);
-    }
 
     .statusRow{
-      display:flex; gap:.8rem; flex-wrap:wrap;
+      display:flex;
+      gap:.8rem;
+      flex-wrap:wrap;
       margin-top:1rem;
-      align-items:center; justify-content:space-between;
+      align-items:center;
+      justify-content:space-between;
       color:var(--muted);
       font-size:.92rem;
     }
+
     .pill{
-      display:inline-flex; gap:.45rem; align-items:center;
+      display:inline-flex;
+      gap:.45rem;
+      align-items:center;
       padding:.35rem .7rem;
       border-radius:999px;
       background: rgba(148,163,184,.12);
       border: 1px solid rgba(148,163,184,.18);
       white-space:nowrap;
     }
-    .pill strong{color:#e2e8f0}
-    .dot{width:.6rem;height:.6rem;border-radius:50%}
-    .dot.on{background:var(--green)}
-    .dot.off{background:rgba(148,163,184,.55)}
+
+    .pill strong{
+      color:#e2e8f0;
+    }
+
+    .dot{
+      width:.6rem;
+      height:.6rem;
+      border-radius:50%;
+      background:rgba(148,163,184,.55);
+    }
+
+    .dot.on{background:var(--green);}
 
     .plan-selector{
       display:flex;
@@ -246,6 +310,7 @@
       margin-top:.6rem;
       font-size:.8rem;
     }
+
     .plan-btn{
       padding:.4rem .8rem;
       border-radius:999px;
@@ -255,33 +320,39 @@
       cursor:pointer;
       text-align:left;
     }
+
     .plan-btn-title{
       font-weight:600;
       color:#e5e7eb;
       display:block;
       font-size:.82rem;
     }
+
     .plan-btn-sub{
       display:block;
       font-size:.75rem;
       color:var(--muted);
       margin-top:.1rem;
     }
+
     .plan-btn-price{
       display:block;
       font-size:.78rem;
       color:#e5e7eb;
       margin-top:.1rem;
     }
+
     .plan-btn.active{
       background:linear-gradient(135deg, rgba(59,130,246,.9), rgba(96,165,250,.85));
       color:#0b1120;
       border-color:rgba(191,219,254,.9);
     }
+
     .plan-btn.active .plan-btn-title,
     .plan-btn.active .plan-btn-price{
       color:#020617;
     }
+
     .plan-btn.active .plan-btn-sub{
       color:#0f172a;
     }
@@ -294,8 +365,12 @@
       scrollbar-width: thin;
       scrollbar-color: rgba(96,165,250,.45) transparent;
     }
+
     .incidents::-webkit-scrollbar{width:10px}
-    .incidents::-webkit-scrollbar-thumb{background: rgba(96,165,250,.35); border-radius:10px}
+    .incidents::-webkit-scrollbar-thumb{
+      background: rgba(96,165,250,.35);
+      border-radius:10px;
+    }
 
     .incidents-toolbar{
       display:flex;
@@ -305,9 +380,26 @@
       font-size:.8rem;
       color:var(--muted);
     }
-    .legend{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
-    .legend-item{display:flex;align-items:center;gap:.25rem}
-    .sev-dot{width:.6rem;height:.6rem;border-radius:50%}
+
+    .legend{
+      display:flex;
+      gap:.6rem;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .legend-item{
+      display:flex;
+      align-items:center;
+      gap:.25rem;
+    }
+
+    .sev-dot{
+      width:.6rem;
+      height:.6rem;
+      border-radius:50%;
+    }
+
     .sev-low{background:var(--green)}
     .sev-med{background:var(--amber)}
     .sev-high{background:var(--red)}
@@ -321,6 +413,7 @@
       margin-bottom: .85rem;
       border: 1px solid rgba(148,163,184,.12);
     }
+
     .incident-header{
       display:flex;
       justify-content:space-between;
@@ -328,12 +421,25 @@
       gap: .75rem;
       font-weight: 800;
     }
-    .incident small{display:block;margin-top:.35rem;color:rgba(226,232,240,.86)}
 
-    .tags{display:flex;gap:.5rem;flex-wrap:wrap;margin:.55rem 0 .1rem}
+    .incident small{
+      display:block;
+      margin-top:.35rem;
+      color:rgba(226,232,240,.86);
+    }
+
+    .tags{
+      display:flex;
+      gap:.5rem;
+      flex-wrap:wrap;
+      margin:.55rem 0 .1rem;
+    }
+
     .tag{
-      display:inline-flex;align-items:center;
-      padding:.25rem .65rem;border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      padding:.25rem .65rem;
+      border-radius:999px;
       background: rgba(59,130,246,.22);
       border: 1px solid rgba(59,130,246,.30);
       font-size:.78rem;
@@ -341,21 +447,41 @@
     }
 
     .risk{
-      display:inline-flex; align-items:center; justify-content:center;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       padding:.22rem .6rem;
       border-radius:999px;
       font-size:.78rem;
       border:1px solid transparent;
       white-space:nowrap;
     }
-    .risk.low{background: rgba(16,185,129,.16); border-color: rgba(16,185,129,.45); color:#d1fae5}
-    .risk.medium{background: rgba(245,158,11,.16); border-color: rgba(245,158,11,.50); color:#ffedd5}
-    .risk.high{background: rgba(239,68,68,.16); border-color: rgba(239,68,68,.50); color:#ffe4e6}
-    .risk.critical{background: rgba(251,113,133,.18); border-color: rgba(251,113,133,.55); color:#fff1f2}
+
+    .risk.low{
+      background: rgba(16,185,129,.16);
+      border-color: rgba(16,185,129,.45);
+      color:#d1fae5;
+    }
+    .risk.medium{
+      background: rgba(245,158,11,.16);
+      border-color: rgba(245,158,11,.50);
+      color:#ffedd5;
+    }
+    .risk.high{
+      background: rgba(239,68,68,.16);
+      border-color: rgba(239,68,68,.50);
+      color:#ffe4e6;
+    }
+    .risk.critical{
+      background: rgba(251,113,133,.18);
+      border-color: rgba(251,113,133,.55);
+      color:#fff1f2;
+    }
 
     .workspace{
       margin-top:1.4rem;
     }
+
     .workspace-header{
       display:flex;
       justify-content:space-between;
@@ -364,20 +490,24 @@
       flex-wrap:wrap;
       margin-bottom:.7rem;
     }
+
     .workspace-title{
       font-size:1rem;
       font-weight:600;
     }
+
     .workspace-subtitle{
       font-size:.85rem;
       color:var(--muted);
     }
+
     .workspace-tabs{
       margin-top:.4rem;
       display:flex;
       flex-wrap:wrap;
       gap:.4rem;
     }
+
     .workspace-tab{
       padding:.4rem .7rem;
       border-radius:999px;
@@ -387,14 +517,17 @@
       color:var(--muted);
       cursor:pointer;
     }
+
     .workspace-tab[aria-selected="true"]{
       background:linear-gradient(135deg, rgba(59,130,246,.9), rgba(96,165,250,.85));
       color:#0b1120;
       border-color:rgba(191,219,254,.9);
     }
+
     .workspace-pages{
       margin-top:.9rem;
     }
+
     .workspace-page{
       border-radius:12px;
       border:1px solid rgba(148,163,184,.28);
@@ -402,6 +535,7 @@
       background:rgba(15,23,42,.95);
       font-size:.88rem;
     }
+
     .workspace-page[hidden]{display:none;}
 
     .ws-row{
@@ -410,6 +544,7 @@
       gap:.7rem;
       margin-top:.6rem;
     }
+
     .ws-chip{
       padding:.3rem .7rem;
       border-radius:999px;
@@ -417,12 +552,14 @@
       font-size:.78rem;
       color:var(--muted);
     }
+
     .ws-form-row{
       display:flex;
       flex-wrap:wrap;
       gap:.6rem;
       margin-top:.6rem;
     }
+
     .ws-form-row label{
       font-size:.8rem;
       color:var(--muted);
@@ -430,6 +567,7 @@
       flex-direction:column;
       gap:.25rem;
     }
+
     .ws-form-row input,
     .ws-form-row select,
     .ws-form-row textarea{
@@ -441,17 +579,14 @@
       font-size:.85rem;
       min-width:150px;
     }
-    .ws-form-row textarea{
-      min-width:260px;
-      min-height:70px;
-      resize:vertical;
-    }
+
     .ws-actions{
       margin-top:.7rem;
       display:flex;
       flex-wrap:wrap;
       gap:.6rem;
     }
+
     .ws-log{
       margin-top:.7rem;
       padding:.55rem .7rem;
@@ -464,18 +599,21 @@
       color:#e5e7eb;
       white-space:pre-wrap;
     }
+
     .ws-table{
       width:100%;
       border-collapse:collapse;
       margin-top:.5rem;
       font-size:.8rem;
     }
+
     .ws-table th,
     .ws-table td{
       border-bottom:1px solid rgba(51,65,85,.9);
       padding:.3rem .35rem;
       text-align:left;
     }
+
     .ws-table th{
       color:#cbd5f5;
       font-weight:600;
@@ -489,6 +627,7 @@
       flex-wrap:wrap;
       justify-content:center;
     }
+
     button{
       padding: .85rem 1.25rem;
       border-radius: 14px;
@@ -500,13 +639,17 @@
       background: rgba(148,163,184,.10);
       transition: transform .08s ease, filter .12s ease, background .12s ease;
       user-select:none;
-      display:inline-flex;align-items:center;gap:.45rem;
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
     }
+
     button span.icon{
       display:inline-flex;
       align-items:center;
       justify-content:center;
     }
+
     button span.icon svg{
       width:18px;
       height:18px;
@@ -514,13 +657,23 @@
       stroke:#e5e7eb;
       stroke-width:1.8;
     }
+
     button:hover{filter: brightness(1.05)}
     button:active{transform: translateY(1px)}
     button:focus-visible{outline:none; box-shadow: var(--focus)}
-    button.primary{background: linear-gradient(135deg, rgba(59,130,246,.92), rgba(96,165,250,.88))}
-    button.secondary{background: linear-gradient(135deg, rgba(147,197,253,.85), rgba(96,165,250,.70)); color:#020617}
-    button.success{background: linear-gradient(135deg, rgba(16,185,129,.92), rgba(5,150,105,.86))}
-    button.ghost{background: rgba(2,6,23,.25)}
+    button.primary{
+      background: linear-gradient(135deg, rgba(59,130,246,.92), rgba(96,165,250,.88));
+    }
+    button.secondary{
+      background: linear-gradient(135deg, rgba(147,197,253,.85), rgba(96,165,250,.70));
+      color:#020617;
+    }
+    button.success{
+      background: linear-gradient(135deg, rgba(16,185,129,.92), rgba(5,150,105,.86));
+    }
+    button.ghost{
+      background: rgba(2,6,23,.25);
+    }
     button[disabled]{opacity:.55; cursor:not-allowed}
 
     .sr-only{
@@ -531,24 +684,29 @@
       white-space:nowrap;border:0;
     }
 
+    .footer{
+      margin-top:1.5rem;
+      font-size:0.75rem;
+      color:var(--muted);
+      text-align:center;
+    }
+
     @media (max-width: 1100px){
       .grid{grid-template-columns: 1fr; }
       .metrics{grid-template-columns: repeat(2, 1fr);}
       .statusRow{justify-content:center}
     }
+
     @media (max-width: 720px){
       .header{flex-direction:column;align-items:flex-start}
       .badge{align-self:flex-start}
     }
+
     @media (max-width: 520px){
       .container{padding:1rem}
       .metrics{grid-template-columns: 1fr;}
       button{width:100%;justify-content:center}
       .statusRow{justify-content:center}
-    }
-    @media (prefers-reduced-motion: reduce){
-      button{transition:none}
-      .metric{transition:none}
     }
   </style>
 </head>
@@ -595,7 +753,7 @@
       </div>
 
       <div class="badge" role="note">
-        Enterprise Maritime Cyber Platform · From $15,000 to $125,000 USD / Month · Annual contracts · Global support
+        Private Maritime Cyber Platform · Enterprise contracts · Global support
       </div>
     </header>
 
@@ -612,6 +770,7 @@
             <h2 id="riskScore" aria-live="polite">–</h2>
             <span>Risk</span>
           </button>
+
           <button class="metric" type="button" data-key="assets" aria-describedby="metricDetailText">
             <div class="metric-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
@@ -623,6 +782,7 @@
             <h2 id="assetsCount" aria-live="polite">–</h2>
             <span>Assets</span>
           </button>
+
           <button class="metric" type="button" data-key="uptime" aria-describedby="metricDetailText">
             <div class="metric-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
@@ -633,6 +793,7 @@
             <h2 id="uptimeMetric" aria-live="polite">–</h2>
             <span>Uptime</span>
           </button>
+
           <button class="metric" type="button" data-key="eps" aria-describedby="metricDetailText">
             <div class="metric-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
@@ -655,7 +816,9 @@
           </div>
           <div class="metric-details-main">
             <strong id="metricDetailTitle">Risk Index</strong>
-            <span id="metricDetailText">Select any metric to see an executive explanation and its current value.</span>
+            <span id="metricDetailText">
+              Select any metric to see an executive explanation and its current value.
+            </span>
           </div>
         </div>
 
@@ -684,21 +847,21 @@
           </div>
         </div>
 
-        <div class="plan-selector" aria-label="Enterprise pricing plans">
+        <div class="plan-selector" aria-label="Enterprise deployment models">
           <button type="button" class="plan-btn active" data-plan="starter">
             <span class="plan-btn-title">Fleet Starter</span>
             <span class="plan-btn-sub">Up to 25 vessels, single region</span>
-            <span class="plan-btn-price">From $15,000 / month · Annual</span>
+            <span class="plan-btn-price">Scope‑based enterprise agreement</span>
           </button>
           <button type="button" class="plan-btn" data-plan="advanced">
             <span class="plan-btn-title">Port & Offshore Advanced</span>
             <span class="plan-btn-sub">Ports, terminals and offshore clusters</span>
-            <span class="plan-btn-price">From $45,000 / month · Annual</span>
+            <span class="plan-btn-price">Scope‑based enterprise agreement</span>
           </button>
           <button type="button" class="plan-btn" data-plan="enterprise">
             <span class="plan-btn-title">Enterprise 360</span>
             <span class="plan-btn-sub">Multi‑fleet, multi‑region, governance‑driven</span>
-            <span class="plan-btn-price">From $125,000 / month · Annual</span>
+            <span class="plan-btn-price">Global enterprise agreement</span>
           </button>
         </div>
       </section>
@@ -717,35 +880,61 @@
         </div>
 
         <div class="incidents" id="incidentsContainer">
-          <p id="emptyState" style="color:var(--muted); margin:.2rem 0 0;">Waiting for data...</p>
+          <p id="emptyState" style="color:var(--muted); margin:.2rem 0 0;">
+            Waiting for data...
+          </p>
         </div>
 
         <p class="sr-only" id="srAnnounce" aria-live="polite" aria-atomic="true"></p>
       </section>
     </main>
 
+    <!-- WORKSPACE -->
     <section class="card workspace" aria-label="Operations workspace">
       <div class="workspace-header">
         <div>
           <div class="workspace-title" id="wsTitle">Execution · Risk Index</div>
           <div class="workspace-subtitle" id="wsSubtitle">
-            Tie commercial scope to execution: select a metric or module to see how it is enforced on fleets, ports and offshore tenants.
+            Tie commercial scope to execution: select a metric or module to see how it is
+            enforced on fleets, ports and offshore tenants.
           </div>
         </div>
-        <span class="workspace-subtitle">All modules are region‑agnostic, tenant‑aware and designed for board‑level reporting.</span>
+        <span class="workspace-subtitle">
+          All modules are region‑agnostic, tenant‑aware and designed for board‑level reporting.
+        </span>
       </div>
 
       <div class="workspace-tabs" role="tablist" aria-label="Execution modules">
-        <button class="workspace-tab" role="tab" aria-selected="true" data-page="fleet">1 · Fleet registry</button>
-        <button class="workspace-tab" role="tab" aria-selected="false" data-page="satcom">2 · SatCom links</button>
-        <button class="workspace-tab" role="tab" aria-selected="false" data-page="vhf">3 · VHF guard</button>
-        <button class="workspace-tab" role="tab" aria-selected="false" data-page="ais">4 · AIS integrity</button>
-        <button class="workspace-tab" role="tab" aria-selected="false" data-page="endpoints">5 · Endpoint health</button>
-        <button class="workspace-tab" role="tab" aria-selected="false" data-page="access">6 · Access control</button>
-        <button class="workspace-tab" role="tab" aria-selected="false" data-page="drills">7 · Incident drills</button>
-        <button class="workspace-tab" role="tab" aria-selected="false" data-page="geofence">8 · Geo‑fences</button>
-        <button class="workspace-tab" role="tab" aria-selected="false" data-page="compliance">9 · Compliance</button>
-        <button class="workspace-tab" role="tab" aria-selected="false" data-page="failover">10 · Emergency failover</button>
+        <button class="workspace-tab" role="tab" aria-selected="true" data-page="fleet">
+          1 · Fleet registry
+        </button>
+        <button class="workspace-tab" role="tab" aria-selected="false" data-page="satcom">
+          2 · SatCom links
+        </button>
+        <button class="workspace-tab" role="tab" aria-selected="false" data-page="vhf">
+          3 · VHF guard
+        </button>
+        <button class="workspace-tab" role="tab" aria-selected="false" data-page="ais">
+          4 · AIS integrity
+        </button>
+        <button class="workspace-tab" role="tab" aria-selected="false" data-page="endpoints">
+          5 · Endpoint health
+        </button>
+        <button class="workspace-tab" role="tab" aria-selected="false" data-page="access">
+          6 · Access control
+        </button>
+        <button class="workspace-tab" role="tab" aria-selected="false" data-page="drills">
+          7 · Incident drills
+        </button>
+        <button class="workspace-tab" role="tab" aria-selected="false" data-page="geofence">
+          8 · Geo‑fences
+        </button>
+        <button class="workspace-tab" role="tab" aria-selected="false" data-page="compliance">
+          9 · Compliance
+        </button>
+        <button class="workspace-tab" role="tab" aria-selected="false" data-page="failover">
+          10 · Emergency failover
+        </button>
       </div>
 
       <div class="workspace-pages">
@@ -816,7 +1005,7 @@
         </div>
 
         <div class="workspace-page" data-page="ais" role="tabpanel" hidden>
-          <strong>AIS & tracking integrity</strong>
+          <strong>AIS &amp; tracking integrity</strong>
           <div class="ws-row">
             <span class="ws-chip">Spoofing detection</span>
             <span class="ws-chip">Silent vessels</span>
@@ -852,7 +1041,7 @@
         </div>
 
         <div class="workspace-page" data-page="access" role="tabpanel" hidden>
-          <strong>Crew access control & MFA</strong>
+          <strong>Crew access control &amp; MFA</strong>
           <div class="ws-form-row">
             <label>Password policy
               <select id="accPolicy">
@@ -912,7 +1101,7 @@
         </div>
 
         <div class="workspace-page" data-page="compliance" role="tabpanel" hidden>
-          <strong>Log retention & compliance profile</strong>
+          <strong>Log retention &amp; compliance profile</strong>
           <div class="ws-form-row">
             <label>Retention (days)
               <input id="cmpRetention" type="number" min="7" max="365" value="180" />
@@ -1002,6 +1191,16 @@
         <span>Export Executive Briefing</span>
       </button>
     </div>
+
+    <!-- LEGAL FOOTER -->
+    <footer class="footer" aria-label="Legal notice">
+      <p>
+        OceanCentinell is a division of CentinellSuite Defense.
+        Operated by Victoria en Cristo Jesús LLC.
+        All rights reserved.
+        Created on February 19, 2026.
+      </p>
+    </footer>
   </div>
 
   <script>
@@ -1009,9 +1208,9 @@
       "use strict";
 
       const PLANS = {
-        starter:   { label: "Fleet Starter",            price: 15000 },
-        advanced:  { label: "Port & Offshore Advanced", price: 45000 },
-        enterprise:{ label: "Enterprise 360",           price: 125000 },
+        starter:   { label: "Fleet Starter" },
+        advanced:  { label: "Port & Offshore Advanced" },
+        enterprise:{ label: "Enterprise 360" },
       };
 
       let ACTIVE_PLAN = "starter";
@@ -1019,8 +1218,6 @@
       const CONFIG = {
         refreshMs: 4000,
         maxIncidents: 60,
-        exportRevokeDelayMs: 1200,
-        announceCooldownMs: 7000,
       };
 
       const $ = (id) => document.getElementById(id);
@@ -1038,7 +1235,6 @@
         lastUpdate: $("lastUpdate"),
         bufferCount: $("bufferCount"),
         pricePill: $("pricePill"),
-        metricDetails: $("metricDetails"),
         metricDetailTitle: $("metricDetailTitle"),
         metricDetailText: $("metricDetailText"),
         exportBtn: $("exportBtn"),
@@ -1048,12 +1244,9 @@
 
       const metricCards = Array.from(document.querySelectorAll(".metric"));
       const metricDetailsIcon = document.getElementById("detailIconSvg");
-      const autoIconSvg = document.getElementById("autoIconSvg");
       const miniDash = document.getElementById("miniDash");
-
       const wsTabs = Array.from(document.querySelectorAll(".workspace-tab"));
       const wsPages = Array.from(document.querySelectorAll(".workspace-page"));
-
       const planButtons = Array.from(document.querySelectorAll(".plan-btn"));
 
       const fmtTime = new Intl.DateTimeFormat(undefined, {
@@ -1061,12 +1254,6 @@
         minute: "2-digit",
         second: "2-digit"
       });
-
-      function safeFilenameTimestamp(isoString){
-        return String(isoString)
-          .replace(/\.\d{3}Z$/, "Z")
-          .replace(/:/g, "-");
-      }
 
       function riskBucket(score){
         if (score >= 90) return "CRITICAL";
@@ -1083,195 +1270,120 @@
         return "low";
       }
 
-      class OceanCentinellSIEM {
-        constructor() {
+      class OceanCentinellSIEM{
+        constructor(){
           this.incidents = [];
-          this.metrics = { risk_score: null, assets: null, uptime: null, eps: null };
+          this.metrics = { risk_score:null, assets:null, uptime:null, eps:null, risk_level:null, updated_at:null };
           this.maxIncidents = CONFIG.maxIncidents;
-
           this._timer = null;
           this._auto = false;
           this._started = false;
-
-          this._lastBatchCount = 0;
           this._lastAnnounceAt = 0;
-
-          this._exportLock = false;
-
           this.activeVessel = null;
         }
 
-        start() {
+        start(){
           if (this._started) return;
           this._started = true;
-
-          this.refreshAll({ newIncidents: true, announce: false });
-          this._setAuto(true);
+          this.refreshAll({ newIncidents:true, announce:false });
+          this.setAuto(true);
         }
 
-        stop() {
-          this._setAuto(false);
-        }
-
-        destroy() {
-          this.stop();
+        stop(){
+          this.setAuto(false);
           this._started = false;
         }
 
-        _setAuto(enabled) {
-          this._auto = Boolean(enabled);
-
-          if (this._timer) {
+        setAuto(enabled){
+          this._auto = !!enabled;
+          if (this._timer){
             clearInterval(this._timer);
             this._timer = null;
           }
-
-          els.autoDot.className = "dot " + (this._auto ? "on" : "off");
-          els.autoText.textContent = `Auto refresh: ${this._auto ? "ON" : "OFF"}`;
-
-          if (this._auto) {
-            autoIconSvg.innerHTML = '<path d="M9 7h2v10H9zM13 7h2v10h-2z"/>';
-          } else {
-            autoIconSvg.innerHTML = '<path d="M9 7l8 5-8 5z"/>';
-          }
-
-          if (this._auto) {
+          els.autoDot.classList.toggle("on", this._auto);
+          els.autoText.textContent = "Auto refresh: " + (this._auto ? "ON" : "OFF");
+          if (this._auto){
             this._timer = setInterval(() => {
-              try {
-                const add = Math.random() > 0.45;
-                this.refreshAll({ newIncidents: add, announce: add });
-              } catch (e) {
-                console.error("OceanCentinell tick failure:", e);
-                this._setAuto(false);
-                this._announce("Auto refresh stopped due to internal error.");
-              }
+              this.refreshAll({ newIncidents:true, announce:false });
             }, CONFIG.refreshMs);
           }
         }
 
-        toggleAuto() {
-          this._setAuto(!this._auto);
+        refreshAll({ newIncidents, announce } = {}){
+          this.updateMockMetrics();
+          if (newIncidents) this.appendMockIncidents();
+          this.render();
+          if (announce) this.announce(`${this._lastBatchCount} new incidents added.`);
         }
 
-        refreshAll({ newIncidents, announce }) {
-          this._updateMockMetrics();
-          if (newIncidents) this._appendMockIncidents();
-          this._render();
-
-          if (announce && newIncidents) {
-            const now = Date.now();
-            if (now - this._lastAnnounceAt > CONFIG.announceCooldownMs) {
-              this._announce(`${this._lastBatchCount} new incident(s) added.`);
-              this._lastAnnounceAt = now;
-            }
-          }
-        }
-
-        clear() {
-          this.incidents = [];
-          this._render();
-          this._announce("Incidents cleared.");
-        }
-
-        forceScan() {
-          this.refreshAll({ newIncidents: true, announce: true });
-        }
-
-        _updateMockMetrics() {
-          const risk = +(Math.random() * 100).toFixed(1);
-          const uptime = +(99 + Math.random()).toFixed(2);
-          const eps = Math.floor(Math.random() * 5000 + 3000);
-          const assets = Math.floor(20 + Math.random() * 220);
+        updateMockMetrics(){
+          const risk = +(20 + Math.random()*78).toFixed(1);
+          const assets = Math.floor(20 + Math.random()*220);
+          const uptime = +(99 + Math.random()*0.9).toFixed(2);
+          const eps = Math.floor(3000 + Math.random()*5000);
 
           this.metrics = {
-            risk_score: risk,
+            risk_score:risk,
             assets,
             uptime,
             eps,
-            risk_level: riskBucket(risk),
-            updated_at: new Date(),
+            risk_level:riskBucket(risk),
+            updated_at:new Date()
           };
         }
 
-        _appendMockIncidents() {
-          const vectors = [
-            "Phishing",
-            "Port Scan",
-            "Malware Beacon",
-            "Ransomware",
-            "Brute Force",
-            "DDoS",
-          ];
-          const regions = [
-            "Operational Zone Alpha",
-            "Operational Zone Bravo",
-            "Operational Zone Charlie",
-            "Offshore Sector 1",
-            "Harbor Sector 2",
-          ];
-          const assets = [
-            "Bridge Server",
-            "NavCom",
-            "Radar Host",
-            "AIS Node",
-            "Fleet Gateway",
-          ];
+        appendMockIncidents(){
+          const vectors = ["Phishing", "Port Scan", "Malware Beacon", "Ransomware", "Brute Force", "DDoS"];
+          const regions = ["Operational Zone Alpha", "Operational Zone Bravo", "Offshore Sector 1", "Harbor Sector 2"];
+          const assets = ["Bridge Server", "NavCom", "Radar Host", "AIS Node", "Fleet Gateway"];
 
-          const batchSize = Math.floor(2 + Math.random() * 5);
+          const severities = ["LOW","MEDIUM","HIGH","CRITICAL"];
+          const batchSize = 2 + Math.floor(Math.random()*4);
           this._lastBatchCount = batchSize;
 
-          const now = new Date();
-          const baseId = 1000 + Math.floor(Math.random() * 9000);
-
-          const batch = Array.from({ length: batchSize }, (_, k) => {
-            const risk = ["LOW", "MEDIUM", "HIGH", "CRITICAL"][
-              Math.floor(Math.random() * 4)
-            ];
-            const vector = vectors[Math.floor(Math.random() * vectors.length)];
-            const region = regions[Math.floor(Math.random() * regions.length)];
-            const asset = assets[Math.floor(Math.random() * assets.length)];
-
-            return {
-              id: `INC-${baseId + k}`,
-              risk,
-              vector,
-              region,
+          const now = Date.now();
+          const batch = [];
+          for (let i=0;i<batchSize;i++){
+            const sev = severities[Math.floor(Math.random()*severities.length)];
+            const vec = vectors[Math.floor(Math.random()*vectors.length)];
+            const reg = regions[Math.floor(Math.random()*regions.length)];
+            const asset = assets[Math.floor(Math.random()*assets.length)];
+            const id = "INC-" + (1000 + Math.floor(Math.random()*9000));
+            batch.push({
+              id,
+              risk:sev,
+              vector:vec,
+              region:reg,
               asset,
-              vessel: this.activeVessel || "Any registered vessel",
-              timestamp: now.toISOString(),
-            };
-          });
+              vessel:this.activeVessel || "Any registered vessel",
+              timestamp:new Date(now - Math.floor(Math.random()*300000)).toISOString()
+            });
+          }
 
-          this.incidents = [...batch, ...this.incidents].slice(0, this.maxIncidents);
+          this.incidents = batch.concat(this.incidents).slice(0,this.maxIncidents);
         }
 
-        _render() {
+        render(){
           const m = this.metrics;
           const plan = PLANS[ACTIVE_PLAN];
 
-          els.pricePill.textContent = `${plan.label} · $${plan.price.toLocaleString()} USD / month (annual)`; 
-
-          els.riskScore.textContent = m.risk_score ?? "–";
-          els.assetsCount.textContent = m.assets ?? "–";
-          els.uptimeMetric.textContent =
-            m.uptime != null ? `${m.uptime}%` : "–";
-          els.epsMetric.textContent =
-            m.eps != null ? `${(m.eps / 1000).toFixed(1)}K` : "–";
-
-          els.lastUpdate.textContent = m.updated_at
-            ? fmtTime.format(m.updated_at)
-            : "–";
+          els.riskScore.textContent = m.risk_score != null ? m.risk_score.toFixed(1) : "–";
+          els.assetsCount.textContent = m.assets != null ? m.assets.toString() : "–";
+          els.uptimeMetric.textContent = m.uptime != null ? m.uptime.toFixed(2) + " %" : "–";
+          els.epsMetric.textContent = m.eps != null ? (m.eps/1000).toFixed(1) + "K" : "–";
+          els.lastUpdate.textContent = m.updated_at ? fmtTime.format(m.updated_at) : "–";
           els.bufferCount.textContent = String(this.incidents.length);
+          els.pricePill.textContent = `${plan.label} · Enterprise scope‑based agreement`;
 
+          // incidents
           els.incidents.replaceChildren();
-          if (!this.incidents.length) {
+          if (!this.incidents.length){
             els.incidents.appendChild(els.emptyState);
             return;
           }
 
           const frag = document.createDocumentFragment();
-
-          for (const i of this.incidents) {
+          for (const i of this.incidents){
             const card = document.createElement("div");
             card.className = "incident";
 
@@ -1282,10 +1394,10 @@
             left.textContent = i.id;
 
             const right = document.createElement("span");
-            right.className = `risk ${riskClass(i.risk)}`;
+            right.className = "risk " + riskClass(i.risk);
             right.textContent = i.risk;
 
-            header.append(left, right);
+            header.append(left,right);
 
             const tags = document.createElement("div");
             tags.className = "tags";
@@ -1293,126 +1405,89 @@
             const t1 = document.createElement("span");
             t1.className = "tag";
             t1.textContent = i.vector;
-
             const t2 = document.createElement("span");
             t2.className = "tag";
             t2.textContent = i.asset;
-
             const t3 = document.createElement("span");
             t3.className = "tag";
             t3.textContent = i.region;
-
-            tags.append(t1, t2, t3);
+            tags.append(t1,t2,t3);
 
             const small = document.createElement("small");
-            const time = new Date(i.timestamp);
-            small.textContent =
-              `Seen: ${fmtTime.format(time)} · Vessel: ${i.vessel} · Asset: ${i.asset} · Zone: ${i.region}`;
+            const t = new Date(i.timestamp);
+            small.textContent = `Seen ${fmtTime.format(t)} · Vessel ${i.vessel}`;
 
-            card.append(header, tags, small);
+            card.append(header,tags,small);
             frag.appendChild(card);
           }
-
           els.incidents.appendChild(frag);
         }
 
-        _announce(msg) {
+        announce(msg){
           els.srAnnounce.textContent = msg;
-          window.setTimeout(() => {
-            els.srAnnounce.textContent = "";
-          }, 1200);
+          setTimeout(() => { els.srAnnounce.textContent = ""; }, 1200);
         }
 
-        exportExecutiveReport() {
-          if (this._exportLock) return;
+        exportExecutiveReport(){
+          const plan = PLANS[ACTIVE_PLAN];
+          const exportedAt = new Date().toISOString();
+          const report = {
+            platform: "OceanCentinell ENTERPRISE (Offline Demo)",
+            organization: "Victoria en Cristo Jesús LLC",
+            commercial_plan: plan.label,
+            exported_at: exportedAt,
+            metrics: this.metrics,
+            incidents: this.incidents,
+          };
 
-          this._exportLock = true;
-          els.exportBtn.disabled = true;
-
-          let url = null;
-
-          try {
-            const exportedAt = new Date().toISOString();
-            const plan = PLANS[ACTIVE_PLAN];
-
-            const report = {
-              platform: "OceanCentinell ENTERPRISE v3.2 (Offline Demo)",
-              organization: "Victoria en Cristo Jesús LLC",
-              commercial_plan: plan.label,
-              list_price_monthly_usd: plan.price,
-              exported_at: exportedAt,
-              metrics: this.metrics,
-              incidents: this.incidents,
-            };
-
-            const json = JSON.stringify(report, null, 2);
-            const blob = new Blob([json], { type: "application/json" });
-            url = URL.createObjectURL(blob);
-
-            const a = document.createElement("a");
-            a.href = url;
-
-            const ts = safeFilenameTimestamp(exportedAt);
-            const priceLabel = plan.price === 0
-              ? "DEMO-1M"
-              : `${plan.price}USD-MO`;
-
-            a.download = `OceanCentinell_Enterprise_Report_${plan.label}_${priceLabel}_${ts}.json`;
-
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-
-            this._announce("Executive report exported.");
-          } catch (e) {
-            console.error("Export failed:", e);
-            this._announce("Export failed. See console for details.");
-          } finally {
-            if (url) {
-              window.setTimeout(() => {
-                try {
-                  URL.revokeObjectURL(url);
-                } catch (_) {}
-              }, CONFIG.exportRevokeDelayMs);
-            }
-
-            window.setTimeout(() => {
-              this._exportLock = false;
-              els.exportBtn.disabled = false;
-            }, 350);
-          }
+          const json = JSON.stringify(report, null, 2);
+          const blob = new Blob([json], { type:"application/json" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          const ts = exportedAt.replace(/\.\d{3}Z$/,"Z").replace(/:/g,"-");
+          a.href = url;
+          a.download = `OceanCentinell_Enterprise_Report_${plan.label}_ENTERPRISE-SCOPE_${ts}.json`;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(() => URL.revokeObjectURL(url), 1500);
+          this.announce("Executive report exported.");
         }
       }
 
-      const metricDescriptions = {
+      const METRIC_DESCRIPTIONS = {
         risk: {
           title: "Risk Index",
-          getText: (m) =>
-            `Board‑level cyber risk index across your monitored maritime estate. Current score: ${
-              m.risk_score ?? "–"
-            }.`,
+          getText(m){
+            return `Board-level cyber risk index across your monitored maritime estate. Current score ${m.risk_score != null ? m.risk_score.toFixed(1) : "–"}.`;
+          }
         },
         assets: {
           title: "Protected Assets",
-          getText: (m) =>
-            `Critical maritime assets under continuous monitoring (vessels, ports, OT systems). Current assets in scope: ${
-              m.assets ?? "–"
-            }.`,
+          getText(m){
+            return `Critical maritime assets under continuous monitoring (vessels, ports, OT systems). Current assets in scope ${m.assets != null ? m.assets : "–"}.`;
+          }
         },
         uptime: {
           title: "Platform Uptime",
-          getText: (m) =>
-            `Service availability of the OceanCentinell stack across your tenants. Current uptime: ${
-              m.uptime != null ? m.uptime + "%" : "–"
-            }.`,
+          getText(m){
+            return `Service availability of the OceanCentinell stack across your tenants. Current uptime ${m.uptime != null ? m.uptime.toFixed(2) + " %" : "–"}.`;
+          }
         },
         eps: {
           title: "Events Per Second",
-          getText: (m) => {
+          getText(m){
             const eps = m.eps != null ? m.eps.toString() : "–";
-            return `Inbound security telemetry ingestion rate across fleets and ports. Current EPS: ${eps} events/second.`;
-          },
-        },
+            return `Inbound security telemetry ingestion rate across fleets and ports. Current EPS ${eps} events/second.`;
+          }
+        }
+      };
+
+      const METRIC_TO_PAGE = {
+        risk:"fleet",
+        assets:"fleet",
+        uptime:"endpoints",
+        eps:"satcom",
       };
 
       function setDetailIcon(key){
@@ -1436,55 +1511,47 @@
         }
       }
 
-      const METRIC_TO_PAGE = {
-        risk: "fleet",
-        assets: "fleet",
-        uptime: "endpoints",
-        eps: "satcom",
-      };
-
       function renderMiniDash(key, metrics, incidents){
         if (!miniDash) return;
         const m = metrics || {};
         const list = incidents || [];
 
-        const riskCounts = { LOW:0, MEDIUM:0, HIGH:0, CRITICAL:0 };
-        for (let i = 0; i < Math.min(list.length, 40); i++){
-          const r = String(list[i].risk || "").toUpperCase();
-          if (riskCounts.hasOwnProperty(r)) riskCounts[r]++;
-        }
-
         if (key === "risk"){
           const numericScore = typeof m.risk_score === "number" ? m.risk_score : 0;
           const scoreText = m.risk_score != null ? m.risk_score.toFixed(1) : "–";
           const pct = Math.max(0, Math.min(100, numericScore));
-
+          let low=0,med=0,high=0,crit=0;
+          for (let i=0;i<Math.min(list.length,40);i++){
+            const r = String(list[i].risk||"").toUpperCase();
+            if (r==="LOW") low++;
+            else if (r==="MEDIUM") med++;
+            else if (r==="HIGH") high++;
+            else if (r==="CRITICAL") crit++;
+          }
           miniDash.innerHTML = `
             <div class="mini-dash-title">Risk mini‑dashboard</div>
             <div class="mini-dash-row">
               <span class="mini-dash-label">Index</span>
               <div class="mini-dash-bar">
-                <div class="mini-dash-bar-fill" style="width:${pct}%;"></div>
+                <div class="mini-dash-bar-fill" style="width:${pct}%"></div>
               </div>
               <span class="mini-dash-value">${scoreText}</span>
             </div>
-            <div class="mini-dash-grid" style="margin-top:.5rem;">
-              <div class="mini-dash-row">
-                <span class="mini-dash-label">Low</span>
-                <span class="mini-dash-value">${riskCounts.LOW}</span>
-              </div>
-              <div class="mini-dash-row">
-                <span class="mini-dash-label">Medium</span>
-                <span class="mini-dash-value">${riskCounts.MEDIUM}</span>
-              </div>
-              <div class="mini-dash-row">
-                <span class="mini-dash-label">High</span>
-                <span class="mini-dash-value">${riskCounts.HIGH}</span>
-              </div>
-              <div class="mini-dash-row">
-                <span class="mini-dash-label">Critical</span>
-                <span class="mini-dash-value">${riskCounts.CRITICAL}</span>
-              </div>
+            <div class="mini-dash-row">
+              <span class="mini-dash-label">Low</span>
+              <span class="mini-dash-value">${low}</span>
+            </div>
+            <div class="mini-dash-row">
+              <span class="mini-dash-label">Medium</span>
+              <span class="mini-dash-value">${med}</span>
+            </div>
+            <div class="mini-dash-row">
+              <span class="mini-dash-label">High</span>
+              <span class="mini-dash-value">${high}</span>
+            </div>
+            <div class="mini-dash-row">
+              <span class="mini-dash-label">Critical</span>
+              <span class="mini-dash-value">${crit}</span>
             </div>
           `;
         } else if (key === "assets"){
@@ -1492,7 +1559,6 @@
           const guarded = Math.round(assets * 0.85);
           const unguarded = Math.max(0, assets - guarded);
           const pct = assets ? Math.max(0, Math.min(100, guarded / assets * 100)) : 0;
-
           miniDash.innerHTML = `
             <div class="mini-dash-title">Assets mini‑dashboard</div>
             <div class="mini-dash-row">
@@ -1502,7 +1568,7 @@
             <div class="mini-dash-row">
               <span class="mini-dash-label">Guarded</span>
               <div class="mini-dash-bar">
-                <div class="mini-dash-bar-fill" style="width:${pct.toFixed(0)}%;"></div>
+                <div class="mini-dash-bar-fill" style="width:${pct.toFixed(0)}%"></div>
               </div>
               <span class="mini-dash-value">${guarded}</span>
             </div>
@@ -1514,19 +1580,18 @@
         } else if (key === "uptime"){
           const up = typeof m.uptime === "number" ? m.uptime : 0;
           const pct = Math.max(0, Math.min(100, up));
-          const downMinutes = ((100 - up) / 100 * 30 * 24 * 60);
+          const downMinutes = (100 - up) / 100 * 30 * 24 * 60;
           const downText = Number.isFinite(downMinutes) ? downMinutes.toFixed(0) : "–";
-
           miniDash.innerHTML = `
             <div class="mini-dash-title">Uptime mini‑dashboard</div>
             <div class="mini-dash-row">
               <span class="mini-dash-label">Uptime</span>
               <div class="mini-dash-bar">
-                <div class="mini-dash-bar-fill" style="width:${pct}%;"></div>
+                <div class="mini-dash-bar-fill" style="width:${pct}%"></div>
               </div>
-              <span class="mini-dash-value">${up ? up.toFixed(2) : "–"}%</span>
+              <span class="mini-dash-value">${up ? up.toFixed(2) + " %" : "–"}</span>
             </div>
-            <div class="mini-dash-row" style="margin-top:.4rem;">
+            <div class="mini-dash-row">
               <span class="mini-dash-label">Est. downtime</span>
               <span class="mini-dash-value">${downText} min / 30 days</span>
             </div>
@@ -1537,33 +1602,27 @@
           const cap = 8000;
           const pct = Math.max(0, Math.min(100, eps / cap * 100));
           const headroom = Math.max(0, cap - eps);
-
           miniDash.innerHTML = `
             <div class="mini-dash-title">EPS mini‑dashboard</div>
             <div class="mini-dash-row">
               <span class="mini-dash-label">Current</span>
               <div class="mini-dash-bar">
-                <div class="mini-dash-bar-fill" style="width:${pct}%;"></div>
+                <div class="mini-dash-bar-fill" style="width:${pct}%"></div>
               </div>
-              <span class="mini-dash-value">${eps ? k + "K" : "–"}</span>
+              <span class="mini-dash-value">${k} K</span>
             </div>
-            <div class="mini-dash-grid" style="margin-top:.5rem;">
-              <div class="mini-dash-row">
-                <span class="mini-dash-label">Headroom</span>
-                <span class="mini-dash-value">${headroom} EPS</span>
-              </div>
-              <div class="mini-dash-row">
-                <span class="mini-dash-label">Capacity</span>
-                <span class="mini-dash-value">${cap} EPS</span>
-              </div>
+            <div class="mini-dash-row">
+              <span class="mini-dash-label">Headroom</span>
+              <span class="mini-dash-value">${headroom} EPS</span>
+            </div>
+            <div class="mini-dash-row">
+              <span class="mini-dash-label">Capacity</span>
+              <span class="mini-dash-value">${cap} EPS</span>
             </div>
           `;
-        } else {
-          miniDash.innerHTML = `
-            <div class="mini-dash-empty">
-              Click on any metric card to open a focused mini‑dashboard.
-            </div>
-          `;
+        } else{
+          miniDash.innerHTML =
+            '<div class="mini-dash-empty">Click on any metric card to open a focused mini‑dashboard.</div>';
         }
       }
 
@@ -1572,37 +1631,36 @@
           const isActive = tab.dataset.page === pageId;
           tab.setAttribute("aria-selected", isActive ? "true" : "false");
         });
-
         wsPages.forEach(page => {
           page.hidden = page.dataset.page !== pageId;
         });
-
         const label = wsTabs.find(t => t.dataset.page === pageId)?.textContent || "";
-        els.wsTitle.textContent = `Execution · ${label}`;
+        els.wsTitle.textContent = "Execution · " + label;
       }
 
-      function updateMetricDetail(key, metrics){
-        const cfg = metricDescriptions[key];
+      function updateMetricDetail(key, metrics, incidents){
+        const cfg = METRIC_DESCRIPTIONS[key];
         if (!cfg) return;
-
         metricCards.forEach(c => c.classList.toggle("active", c.dataset.key === key));
         setDetailIcon(key);
         els.metricDetailTitle.textContent = cfg.title;
-        els.metricDetailText.textContent = cfg.getText(metrics);
-
+        els.metricDetailText.textContent = cfg.getText(metrics || {});
         const pageId = METRIC_TO_PAGE[key];
         if (pageId) activateWorkspacePage(pageId);
-
-        renderMiniDash(key, metrics, siem.incidents);
+        renderMiniDash(key, metrics, incidents);
       }
 
+      const siem = new OceanCentinellSIEM();
+
+      // Metric card clicks
       metricCards.forEach(card => {
         card.addEventListener("click", () => {
           const key = card.dataset.key;
-          updateMetricDetail(key, siem.metrics);
+          updateMetricDetail(key, siem.metrics, siem.incidents);
         });
       });
 
+      // Workspace tabs
       wsTabs.forEach(tab => {
         tab.addEventListener("click", () => {
           const pageId = tab.dataset.page;
@@ -1610,166 +1668,164 @@
         });
       });
 
+      // Plan buttons
       planButtons.forEach(btn => {
         btn.addEventListener("click", () => {
           const planKey = btn.dataset.plan;
           if (!PLANS[planKey]) return;
           ACTIVE_PLAN = planKey;
           planButtons.forEach(b => b.classList.toggle("active", b === btn));
-          siem._render();
+          siem.render();
         });
       });
 
+      // Fleet registry logic
       const fleetTableBody = document.querySelector("#fleetTable tbody");
-      $("btnAddVessel").addEventListener("click", () => {
-        const name = $("fleetName").value.trim();
-        const id = $("fleetId").value.trim();
-        const role = $("fleetRole").value;
+      const fleetName = $("fleetName");
+      const fleetId = $("fleetId");
+      const fleetRole = $("fleetRole");
+      const btnAddVessel = $("btnAddVessel");
+      const btnClearFleet = $("btnClearFleet");
+
+      btnAddVessel.addEventListener("click", () => {
+        const name = fleetName.value.trim();
+        const id = fleetId.value.trim();
+        const role = fleetRole.value;
         if (!name || !id) return;
-
         const tr = document.createElement("tr");
-        tr.innerHTML =
-          `<td>${name}</td><td>${id}</td><td>${role}</td><td>${fmtTime.format(new Date())}</td>`;
+        tr.innerHTML = `<td>${name}</td><td>${id}</td><td>${role}</td><td>${fmtTime.format(new Date())}</td>`;
         fleetTableBody.appendChild(tr);
-
-        if (!siem.activeVessel) {
+        if (!siem.activeVessel){
           siem.activeVessel = name;
-          if (els.wsSubtitle) {
+          if (els.wsSubtitle){
             els.wsSubtitle.textContent =
-              `Execution scope: simulated incidents focused on vessel "${name}".`;
+              `Execution scope: simulated incidents focused on vessel ${name}.`;
           }
         }
-
-        $("fleetName").value = "";
-        $("fleetId").value = "";
+        fleetName.value = "";
+        fleetId.value = "";
       });
 
-      $("btnClearFleet").addEventListener("click", () => {
+      btnClearFleet.addEventListener("click", () => {
         fleetTableBody.replaceChildren();
         siem.activeVessel = null;
-        if (els.wsSubtitle) {
+        if (els.wsSubtitle){
           els.wsSubtitle.textContent =
             "Tie commercial scope to execution: select a metric or module to see how it is enforced on fleets, ports and offshore tenants.";
         }
       });
 
+      // SatCom
       const satLog = $("satLog");
       $("btnSatHealth").addEventListener("click", () => {
         const profile = $("satProfile").value;
-        const vessel = $("satVessel").value || siem.activeVessel || "all registered vessels";
-        const latency = (400 + Math.random() * 300).toFixed(0);
-        const loss = (Math.random() * 1.5).toFixed(2);
-        satLog.textContent =
-          `[${fmtTime.format(new Date())}] SatCom health check on ${vessel} (${profile}) → latency ${latency} ms, loss ${loss}%.`;
+        const vessel = $("satVessel").value || (siem.activeVessel || "all registered vessels");
+        const latency = (400 + Math.random()*300).toFixed(0);
+        const loss = (Math.random()*1.5).toFixed(2);
+        satLog.textContent = `${fmtTime.format(new Date())} · SatCom health check on ${vessel} (${profile}). Latency ${latency} ms, loss ${loss}%.`;
       });
       $("btnSatBaseline").addEventListener("click", () => {
-        satLog.textContent =
-          `[${fmtTime.format(new Date())}] Updated SatCom baseline for current profile.`;
+        satLog.textContent = `${fmtTime.format(new Date())} · Updated SatCom baseline for current profile.`;
       });
 
+      // VHF guard
       const vhfLog = $("vhfLog");
       $("btnApplyVhf").addEventListener("click", () => {
         const chks = Array.from(document.querySelectorAll(".vhf-ch:checked"));
-        const list = chks.map(c => c.value).join(", ") || "no guarded channels";
-        vhfLog.textContent =
-          `[${fmtTime.format(new Date())}] VHF guard policy applied: ${list}.`;
+        const list = chks.length ? chks.map(c => c.value).join(", ") : "no guarded channels";
+        vhfLog.textContent = `${fmtTime.format(new Date())} · VHF guard policy applied: ${list}.`;
       });
 
+      // AIS
       const aisLog = $("aisLog");
       $("btnAisScan").addEventListener("click", () => {
-        const anomalies = Math.floor(Math.random() * 4);
+        const anomalies = Math.floor(Math.random()*4);
         aisLog.textContent =
-          `[${fmtTime.format(new Date())}] AIS integrity scan completed. Anomalies detected: ${anomalies}.`;
+          `${fmtTime.format(new Date())} · AIS integrity scan completed. Anomalies detected: ${anomalies}.`;
       });
 
+      // Endpoints
       const epLog = $("epLog");
       $("btnEpScan").addEventListener("click", () => {
         const group = $("epGroup").value;
         const depth = $("epDepth").value;
         epLog.textContent =
-          `[${fmtTime.format(new Date())}] Endpoint ${depth} scan launched for ${group} group (simulated).`;
+          `${fmtTime.format(new Date())} · Endpoint ${depth} scan launched for group "${group}" (simulated).`;
       });
 
+      // Access control
       const accLog = $("accLog");
       $("btnApplyAccess").addEventListener("click", () => {
         const policy = $("accPolicy").value;
         const mfa = $("accMfa").value;
         accLog.textContent =
-          `[${fmtTime.format(new Date())}] Access policy set to ${policy} with MFA scope: ${mfa}.`;
+          `${fmtTime.format(new Date())} · Access policy set to "${policy}" with MFA scope "${mfa}".`;
       });
 
+      // Drills
       const drillLog = $("drillLog");
       $("btnLaunchDrill").addEventListener("click", () => {
         const scen = $("drillScenario").value;
-        const vessel = $("drillVessel").value || siem.activeVessel || "fleet‑wide";
+        const vessel = $("drillVessel").value || (siem.activeVessel || "fleet‑wide");
         drillLog.textContent =
-          `[${fmtTime.format(new Date())}] Drill launched (${scen}) targeting ${vessel} (simulated).`;
+          `${fmtTime.format(new Date())} · Drill launched: ${scen} targeting ${vessel} (simulated).`;
       });
 
+      // Geo‑fence
       const geoLog = $("geoLog");
       $("btnApplyGeo").addEventListener("click", () => {
         const name = $("geoName").value || "Unnamed fence";
-        const radius = $("geoRadius").value || "25";
+        const radius = $("geoRadius").value || 25;
         geoLog.textContent =
-          `[${fmtTime.format(new Date())}] Geo‑fence "${name}" applied with radius ${radius} NM.`;
+          `${fmtTime.format(new Date())} · Geo‑fence "${name}" applied with radius ${radius} NM.`;
       });
 
+      // Compliance
       const cmpLog = $("cmpLog");
       $("btnSaveCompliance").addEventListener("click", () => {
         const days = $("cmpRetention").value;
         const profile = $("cmpProfile").value;
         cmpLog.textContent =
-          `[${fmtTime.format(new Date())}] Compliance profile "${profile}" saved with retention ${days} days.`;
+          `${fmtTime.format(new Date())} · Compliance profile "${profile}" saved with retention ${days} days.`;
       });
 
+      // Failover
       const foLog = $("foLog");
       $("btnTestFailover").addEventListener("click", () => {
         const primary = $("foPrimary").value;
         const backup = $("foBackup").value;
         const success = Math.random() > 0.1;
         foLog.textContent =
-          `[${fmtTime.format(new Date())}] Failover test from ${primary} to ${backup}: ` +
+          `${fmtTime.format(new Date())} · Failover test from ${primary} to ${backup}: ` +
           (success ? "SUCCESS (simulated)." : "ISSUES detected, review configuration.");
       });
 
-      const siem = new OceanCentinellSIEM();
-      siem.start();
-
-      // Enterprise CTAs
+      // CTAs
       $("ctaRequestProposal").addEventListener("click", () => {
         window.location.href =
-          "mailto:sales@oceancentinell.com"
-          + "?subject=OceanCentinell%20Enterprise%20Proposal"
-          + "&body=Please%20contact%20me%20about%20an%20enterprise%20proposal%20for%20our%20fleet%2Fports.";
+          "mailto:sales@oceancentinell.com?subject=OceanCentinell%20Enterprise%20Proposal" +
+          "&body=Please%20contact%20me%20about%20an%20enterprise%20agreement%20for%20our%20fleet%2Fports.";
       });
-
       $("ctaScheduleDemo").addEventListener("click", () => {
         window.location.href = "https://your-booking-link.com";
       });
-
       $("ctaTalkToSales").addEventListener("click", () => {
         window.location.href = "https://your-website.com/contact-enterprise";
       });
 
-      els.exportBtn.addEventListener("click", () => siem.exportExecutiveReport());
+      // Export
+      els.exportBtn.addEventListener("click", () => {
+        siem.exportExecutiveReport();
+      });
 
-      // Auto-refresh default ON
-      siem._setAuto(true);
-
+      // Start demo
+      siem.start();
       setTimeout(() => {
-        updateMetricDetail("risk", siem.metrics);
+        updateMetricDetail("risk", siem.metrics, siem.incidents);
         activateWorkspacePage("fleet");
       }, 1500);
 
-      window.addEventListener("beforeunload", () => {
-        try{ siem.destroy(); } catch(_){} 
-      }, { capture:true });
-
-      window.goTo = function(page){
-        window.location.href = page;
-      };
     })();
   </script>
 </body>
 </html>
-
