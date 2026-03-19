@@ -1,0 +1,15 @@
+{
+  "name": "oceancentinell-enterprise",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs"
+  }
+}
+## Run locally
+
+npm install
+npm start
+
+Open:
+http://localhost:3000
