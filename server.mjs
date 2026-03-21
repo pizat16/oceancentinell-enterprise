@@ -1,7 +1,13 @@
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
-import { extname } from 'node:path';
+import { extname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
+// Fix __dirname for ES modules (CRÍTICO en Linux)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = new URL('.', import.meta.url).pathname;
+
+// MIME types
 const mimeTypes = {
   ".html": "text/html",
   ".js": "application/javascript",
@@ -11,8 +17,12 @@ const mimeTypes = {
 
 const server = createServer(async (req, res) => {
 
+  const url = req.url.split("?")[0]; // limpia parámetros
+
+  // =========================
   // API: Metrics
-  if (req.url === "/api/metrics") {
+  // =========================
+  if (url === "/api/metrics") {
     res.writeHead(200, { "Content-Type": "application/json" });
     return res.end(JSON.stringify({
       riskScore: 47.3,
@@ -22,8 +32,10 @@ const server = createServer(async (req, res) => {
     }));
   }
 
+  // =========================
   // API: Incidents
-  if (req.url === "/api/incidents") {
+  // =========================
+  if (url === "/api/incidents") {
     res.writeHead(200, { "Content-Type": "application/json" });
     return res.end(JSON.stringify([
       {
@@ -44,12 +56,14 @@ const server = createServer(async (req, res) => {
     ]));
   }
 
-  // Static files
-  let filePath = "./public" + (req.url === "/" ? "/index.html" : req.url);
+  // =========================
+  // STATIC FILES (FIX REAL)
+  // =========================
+  let filePath = join(__dirname, "public", url === "/" ? "index.html" : url);
 
   try {
     const data = await readFile(filePath);
-    const ext = extname(filePath);
+    const ext = extname(filePath).toLowerCase();
 
     res.writeHead(200, {
       "Content-Type": mimeTypes[ext] || "text/plain"
@@ -63,7 +77,11 @@ const server = createServer(async (req, res) => {
   }
 });
 
-// Start server
-server.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+// =========================
+// START SERVER (CLAVE)
+// =========================
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
 });
